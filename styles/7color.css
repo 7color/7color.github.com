@@ -1,0 +1,345 @@
+/*
+THEME NAME: 7Color
+THEME URI: http://nishuang.de/theme/7color/
+DESCRIPTION: Simple, Clean theme with Colorful head. Flexible width layout. Compatible with WordPress 2.8+
+VERSION: 1.0.4
+AUTHOR:  Ni Shuang
+AUTHOR URI: http://nishuang.de/
+TAGS: White, Blue, flexible-width, two-columns, left-sidebar
+*/
+
+/*Common CSS*/
+	body {margin:0px;padding:0px;font-size:14px;line-height:1.7;font-family:verdana;color:#222;}
+	a,a:visited {text-decoration:none;color:#1166cc;}
+	a:hover {text-decoration:underline;color:#1166cc;}
+	li h3 {color:#222;}
+	li {color:#aaccee;}
+	hr {height:1px;color:#ccccff;}
+	h3 {font-family:Microsoft YaHei,calibri,verdana;font-size:20px;font-weight:normal;}
+	pre {
+	white-space: pre-wrap; /* css-3 */
+	white-space: -moz-pre-wrap; /* Mozilla, since 1999 */
+	white-space: -pre-wrap; /* Opera 4-6 */
+	white-space: -o-pre-wrap; /* Opera 7 */
+	word-wrap: break-word; /* Internet Explorer 5.5+ */
+	}
+
+/*
+LAYOUT: Two-Column (Left)
+DESCRIPTION: Two-column fluid layout with one sidebars left of content
+*/
+	div#container {
+	width:100%;
+	background-image:url(../images/bg_container.gif);
+	background-repeat : repeat-x;
+	}
+
+	div#container,div#primary {
+	padding-top:20px;
+	}
+
+	div#content {
+	width: 960px;
+	margin: 0pt auto;
+	}
+
+	div.sidebar {
+	float:left;
+	overflow:hidden;
+	width:230px;
+	padding:5px 10px 5px 20px;
+	font-size:12px;
+	}
+
+	div#secondary {
+	clear:left;
+	}
+
+	div#footer {
+	clear:both;
+	width:100%;
+	}
+	
+/*Menu*/
+	div#menu {
+	font-family:Microsoft YaHei,calibri,verdana;
+	background-color:#0078cd;
+	background-image:url(../images/bg_menu.jpg);
+	background-position :center top;
+	background-repeat : no-repeat;
+	height:30px;
+	text-align:left;
+	}
+	
+	div#menu_center {
+	width:960px;
+	margin:0 auto;
+	}
+
+	div#menu ul, div#menu ul li,div.gallery dl,div.navigation div.nav-previous {
+	float:left;
+	}
+
+	div#menu ul,div#menu ul ul {
+	line-height:1;
+	list-style:none;
+	margin:0;
+	padding:0;
+	float:left;
+	}
+
+	div#menu ul a {
+	color:#ffffff;
+	display:block;
+	padding:4px 10px;
+	text-decoration:none;
+	}
+
+	div#menu ul ul ul a {
+	font-style:italic;
+	}
+
+	div#menu ul li ul {
+	left:-999em;
+	position:absolute;
+	}
+
+	div#menu ul li:hover ul {
+	left:auto;
+	}
+
+	div#menu ul li ul,div#menu ul li li {display:none;}
+	.rss{
+	height:24px;
+	background-image:url(../images/rss.png);background-repeat : no-repeat;
+	padding:0px 0px 0px 10px;
+	}
+
+	div#menu ul a.logo_a{;font-weight:bold; padding-left:30px;}
+/*Category*/
+	div#category_description {
+	padding-bottom:30px;}
+	
+	div#category_description p{
+	padding:0px;margin:0px;line-height:1;
+	}
+
+	div#category_description h2{
+	margin-top:4px;
+	line-height:1;
+	}
+
+	div#category_description .archive-meta{
+	font-size:28px;
+	font-weight:normal;
+	line-height:1;
+	color:#999999;
+	}
+
+	div#category_description small
+	{margin-left:54px;font-size:12px;}
+
+
+/*Content*/
+	h2{
+	font-family:Microsoft YaHei,calibri,verdana;
+	font-size:34px;
+	font-weight:normal;
+	line-height:1.2;
+	margin:0px 0px 8px 0px;
+	}
+
+	h2 span {color:#dd0000;font-family:verdana;font-size:36px;
+	}
+
+	.entry-title,.entry-meta {
+	clear:both;
+	}
+
+	.entry-title{
+	margin-left:20px;
+	}
+
+	.entry-content{
+	background-image:url(../images/bg_post.gif);background-repeat : repeat-x; background-position:left 2px;
+	border-top:1px solid #dddddd;
+	padding:10px 20px;
+	margin:0px 5px 70px 5px;
+	}
+
+	.entry-content-width,.navigation {width:660px;_overflow:hidden;}
+	.navigation {padding:0px 20px;}
+
+	.entry-content h2{
+	font-family:verdana;
+	font-size:28px;
+	font-weight:normal;
+	line-height:1;
+	}
+
+	.entry-content li{
+	color:#222;}
+
+	.related_post li{
+	color:#ffcc33;}
+
+
+	.entry-meta {
+	font-size:12px;color:#999999;
+	margin-bottom:20px;
+	}
+
+	.meta-nav {
+	color:#55aa22;font-weight:bold;}
+
+	.cat {
+	width:13px;height:13px;background-image:url(../images/icon_cat.gif);background-repeat : no-repeat;float:left;margin:4px 4px 4px 0px;
+	}
+
+	.info {
+	width:48px;height:58px;background-position:left top;background-image:url(../images/icon_info.png);background-repeat : no-repeat;float:left;margin:0px 4px 10px 0px;
+	}
+	
+	
+	div#content #search{
+	float:left;
+	padding:0px;
+	}
+	
+/*Footer*/
+	div#footer-border {
+	width:100%;height:40px;text-align:center;
+	margin-top:20px;
+	background-image:url(../images/bg_post_2.gif);background-repeat : repeat-x;
+	clear:both;
+	}
+
+	div#footer{
+	overflow:visible;
+	background-color:#005599;
+	font-size:12px;
+	clear:both;
+	background-image:url(../images/bg_footer.png);background-repeat : repeat-x;
+	margin-left:auto; margin-right:auto;text-align:center;
+	}
+
+	div#footer-3rd {
+	margin-left:auto; margin-right:auto;text-align:center;
+	width:925px;
+	}
+	
+	
+	div#footer  .footer-bar{
+	text-align:left;
+	float:left;
+	margin:0px 0px 20px 20px;
+	padding:0px;
+	width:280px;
+	}
+
+	div#footer ul{
+	text-align:left;
+	float:left;
+	margin:0px 0px 0px 0px;
+	padding-left:10px;
+	list-style-type:none;
+	}
+
+	div#footer li {
+	font-size:12px;
+	color:#6699ff;
+	}
+
+	div#footer li li{list-style-type:disc;}
+
+	div#footer li a,div#footer li a:visited {color:#ddeeff;}
+	
+	#footer-text {
+	clear:both;
+	margin-left:auto; margin-right:auto;text-align:center;
+	padding:5px;
+	width:600px;
+	color:#99ccff;
+	}
+
+	#footer-text a,#footer-text a:visited{color:#99ccff;}
+
+/*Others*/
+	div.skip-link {
+	position:absolute;
+	right:1em;
+	top:1em;
+	}
+	input#author,input#email,input#url{
+	width:50%;
+	}
+
+	
+	#searchform #s {
+	height:19px;width:120px;
+	background-image:url(../images/bg_container.gif);background-repeat : repeat-x;
+	background-position :left -8px;
+	border-top:solid 1px #666666;border-left:solid 1px #666666;border-right:solid 1px #cccccc;border-bottom:solid 1px #cccccc;
+	}
+
+	div#nav-above {
+	margin-bottom:1em;
+	}
+
+	div#nav-below {
+	margin-top:1em;
+	}
+
+	div#nav-images {
+	height:150px;
+	margin:1em 0;
+	}
+
+	div.navigation {
+	height:1.25em;
+	}
+
+	div.navigation div.nav-next {
+	float:right;
+	text-align:right;
+	}
+	
+	.tocWrap {
+	position: fixed; 
+	width: 200px;
+	z-index: 100;
+	top: 6%;
+	right: 0;
+	display: none;
+	}
+	
+	.toc {
+	display: none;
+	overflow: auto;
+	overflow-x: hidden;
+	border: 1px solid #F0C81E;
+	border-radius: 0 0 1px 1px;
+	-moz-border-radius: 0 0 1px 1px;
+	color: #999;
+	background: #0C1F2C;
+	background: rgba(10,30,40,0.85);
+	padding: 12px;
+	box-shadow: 0 1px 8px #000;
+	-webkit-box-shadow: 0 1px 8px #000;
+	-moz-box-shadow: 0 1px 8px #000;
+	}
+	
+	.tocWrap .toggler {
+	text-align: center;
+	font-size: 12px;
+	background: #F0C81E;
+	border-radius: 2px 2px 0 0;
+	-moz-border-radius: 2px 2px 0 0;
+	color: #122;
+	position: relative;
+	z-index: 101;
+	cursor: pointer;
+	}
+	.toc ul {margin: 0;}
+	.toc li {color: #eff;list-style-type: inherit;}
+	.toc a {color: #eff;}
