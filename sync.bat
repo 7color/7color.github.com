@@ -1,21 +1,48 @@
 @echo off
-title Git Sync... 
-::Start...
-echo Start synchronizing...
+title Sync Blogger
 
-echo Commit changes...
+:PULL
+echo Blogger sync(pull) starting...
+echo .
+git pull 7color master
 
-:: get date and time 
-:: for /f "delims=" %%a in ('date/t') do @set mydate=%%a 
-:: for /f "delims=" %%a in ('time/t') do @set mytime=%%a 
+echo .
+echo ==============================================================================
+git status
+
+echo .
+echo ==============================================================================
+:LABEL_CONFIRM
+set /p doPush=Pull from server completed, continue to push(y/n)?
+if "%doPush%"=="y" goto LABEL_PUSH
+if "%doPush%"=="n" goto exit
+goto LABEL_CONFIRM
+
+
+:LABEL_PUSH
+echo .
+
+:: get date and time
+:: for /f "delims=" %%a in ('date/t') do @set mydate=%%a
+:: for /f "delims=" %%a in ('time/t') do @set mytime=%%a
 set mydate=%DATE:~0,10%
 set mytime=%TIME:~0,8%
-set fvar=%mydate%%mytime% 
+set fvar=%mydate% %mytime%
 
-:: add all new files 
-call git add . 
-call git commit -a -m "Automated commit on %fvar%"
+git add .
+git commit -a -m "Automatic commit blog at %fvar%"
 
-:: push to the server. Default in "origin" remote, "master" branch
+:: check if ssh-agent is running
+:: tasklist|find /i "ssh-agent.exe" || cmd /c ""C:\Program Files\Git\bin\sh.exe" --login -i" && exit
 call git push 7color master
-exit
+
+echo .
+echo .---------------------------------------------------------------------------.
+echo ' '
+echo ' Sync complete! '
+echo ' '
+echo `---------------------------------------------------------------------------+
+
+:LABEL_DONE
+pause
+
