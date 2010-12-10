@@ -1,4 +1,4 @@
-@echo on
+@echo off
 title Git Sync... 
 ::Start...
 echo Start synchronizing...
@@ -11,9 +11,6 @@ echo Commit changes...
 set mydate=%DATE:~0,10%
 set mytime=%TIME:~0,8%
 set fvar=%mydate%%mytime% 
-
-echo %fval%
-pause
 
 :: add all new files 
 call git add . 
