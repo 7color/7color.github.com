@@ -49,6 +49,15 @@ TAGS: White, Blue, flexible-width, two-columns, left-sidebar
 LAYOUT: Two-Column (Left)
 DESCRIPTION: Two-column fluid layout with one sidebars left of content
 */
+	div#header {
+	font-family:Microsoft YaHei,calibri,verdana;
+	background-color:#0078cd;
+	background-image:url(../images/bg_menu.jpg);
+	background-position :center top;
+	background-repeat : no-repeat;
+	height:30px;
+	text-align:left;	
+	}
 	div#container {
 	width:100%;
 	background-image:url(../images/bg_container.gif);
@@ -82,9 +91,8 @@ DESCRIPTION: Two-column fluid layout with one sidebars left of content
 	}
 	
 	div#search{
-	position:absolute;
-	float:left;
-	padding:1px 0px 0px 928px;
+	float:right;
+	padding:1px 57px 0 0;
 	}
 	
 	#search-input {width:182px;height:28px;padding:2px 0px 2px 25px;background:url("../images/search-input.png") 0 0 no-repeat;}
@@ -93,18 +101,12 @@ DESCRIPTION: Two-column fluid layout with one sidebars left of content
 	
 /*Menu*/
 	div#menu {
-	font-family:Microsoft YaHei,calibri,verdana;
-	background-color:#0078cd;
-	background-image:url(../images/bg_menu.jpg);
-	background-position :center top;
-	background-repeat : no-repeat;
-	height:30px;
-	text-align:left;
-	}
-	
-	div#menu_center,div#search {
 	width:960px;
 	margin:0 auto;
+	}
+	
+	div#menu_center {
+	float:left;
 	}
 
 	div#menu ul, div#menu ul li,div.gallery dl,div.navigation div.nav-previous {
