@@ -1,22 +1,17 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" >
-    <title>404 Page not found!</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>搜索页面 - 七彩映像.Wiki</title>
     <meta name="Keywords" content="Keywords" >
     <meta name="Description" content="Description" >
     <link href="images/favicon.ico" rel="SHORTCUT ICON" type="image/x-icon" >
     <link rel="Stylesheet" type="text/css" href="styles/base.css" />
     <link rel="Stylesheet" type="text/css" href="styles/7color.css" />
+    <link rel="Stylesheet" type="text/css" href="styles/search.css" />
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
-    <script type="text/javascript">
-	$(function(){
-    	if(document.body.clientHeight < document.documentElement.clientHeight){
-		$('#container').css('height', document.documentElement.clientHeight - 80);
-		$(window).resize(function(){$('#container').css('height', document.documentElement.clientHeight - 80)});
-	}
-	});
-    </script>
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+	<script type="text/javascript" src="scripts/search.js"></script>
 </head>
 <body>
 <div id="header">
@@ -30,26 +25,14 @@
                  <li class="logo"><a href="#" class="logo_a"> 七彩映像(@7color)</a></li>
              </ul>
          </div>
-         <div id="search">
-            <form method="get" action="#" id="search-input" >
-                <input type="text" name="s" value="" size="13" id="search-input-input"><input type="submit" id="search-submit" name="" value="OK">
-            </form>
-         </div>
      </div>
 </div>
 <div id="container">
     <div id="content">
-        <div class="info"></div><h2 class="page-title">404 Page not found!</h2>
+        <h2 class="page-title"></h2>
         <div class="entry-content">
-            <p>很抱歉, 未发现到你要寻找的东西. 也许你可以使用搜索功能. </p>
-            <div id="search">
-                <form method="get" action="#">
-                        <div id="search-input">
-                        <input type="text" id="search-input-input" name="s" value="" size="13"><input type="submit" id="search-submit" name="" value="OK">
-                        </div>
-                </form>
-            </div>
-        </div>	
+            <div id="cse">正在搜索...</div>
+        </div>
     </div>
 </div>
 <div id="footer">

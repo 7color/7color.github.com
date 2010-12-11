@@ -45,6 +45,7 @@ TAGS: White, Blue, flexible-width, two-columns, left-sidebar
 	padding-left: 10px;
 	padding-top: 10px;
 	}
+	table{border-collapse:collapse;}
 	/*
 LAYOUT: Two-Column (Left)
 DESCRIPTION: Two-column fluid layout with one sidebars left of content
@@ -95,7 +96,7 @@ DESCRIPTION: Two-column fluid layout with one sidebars left of content
 	padding:1px 57px 0 0;
 	}
 	
-	#search-input {width:182px;height:28px;padding:2px 0px 2px 25px;background:url("../images/search-input.png") 0 0 no-repeat;}
+	#search-input {width:182px;height:28px;padding:2px 0px 2px 25px;background:url(../images/search-input.png) 0 0 no-repeat;}
 	#search-input-input {height:16px;width:115px;background-image:url(../images/front/bg_container.gif);background-repeat : repeat-x;background-position :left -8px;padding-top:3px;border:solid 1px #cccccc;}
 	#search-submit {border-width:0px;background: transparent;cursor: pointer;font-size:12px;color:#fff;font-weight:bold;margin:3px 3px;padding:0px;font-family:verdana;}
 	

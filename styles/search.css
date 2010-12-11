@@ -1,0 +1,150 @@
+    table{margin:0;}
+	td,td{border:none;padding:0;}
+
+	.page-title{padding-left:15px;}
+    
+    p.loading, .gs-no-results-result .gs-snippet {
+        background-color: #fea;
+        text-align: center;
+        padding: 3px;
+        -moz-border-radius: 5px;
+        -webkit-border-radius: 5px;
+        border-radius: 5px;
+        -moz-box-shadow: 1px 1px 5px rgba(0,0,0,0.1);
+        -webkit-box-shadow: 1px 1px 5px rgba(0,0,0,0.1);
+        box-shadow: 1px 1px 5px rgba(0,0,0,0.1);
+        width: 180px;
+        border: none;
+        margin-left: 170px;
+    }
+    
+    .tl.right .br {
+        width: 200px;
+        min-height: 80px;
+        _height: 80px;
+    }
+    
+    form.gsc-search-box {
+        margin-left: 671px;
+        position: absolute;
+        z-index: 1;
+        top: 0;
+    }
+	
+	div#search,form.gsc-search-box{
+	float:right;
+	padding:1px 57px 0 0;
+	}
+	
+	#search-input,table.gsc-search-box {width:182px;height:28px;padding:2px 0px 2px 25px;background:url(images/search-input.png) 0 0 no-repeat;}
+	#search-input-input,input.gsc-input {height:16px;width:115px;background-image:url(images/bg_container.gif);background-repeat : repeat-x;background-position :left -8px;padding-top:3px;border:solid 1px #cccccc;}
+	#search-submit,input.gsc-search-button {border-width:0px;background: transparent;cursor: pointer;font-size:12px;color:#fff;font-weight:bold;margin:3px 3px;padding:0px;font-family:verdana;}
+    
+    .gsc-branding {
+        position: absolute;
+        top: 220px;
+        margin-left: 60px;
+        color: #888;
+        text-shadow: 0 1px 0 #fff;
+    }
+    
+    img.gsc-branding-img {
+        position: relative;
+        top: 2px;
+        left: 3px;
+    }
+    
+    .gsc-tabsArea, .gsc-clear-button, .gsc-tabHeader, .gsc-resultsHeader, .gsc-trailing-more-results, a.gsc-trailing-more-results, .gs-visibleUrl, .gs-watermark, .gsc-adBlock, .gsc-adBlockVertical {
+        display: none;
+    }
+    
+    .gs-result {
+        height: 6.5em;
+        margin-bottom: 1em;
+    }
+    
+    b {
+        padding: 1px 3px;
+        background-color: #fea;
+        -moz-border-radius: 3px;
+        -webkit-border-radius: 3px;
+        border-radius: 3px;
+        text-shadow: none;
+    }
+    
+    .gs-snippet b, .p b {
+        font-weight: normal;
+    }
+    
+    .p b {
+        padding: 2px 4px;
+        font-size: 120%;
+        line-height: 220%;
+    }
+    
+    .gs-visibleUrl-long {
+        color: #aaa;
+        margin-left: 42px;
+    }
+    
+    .gsc-cursor-box {
+        margin-top: 20px;
+    }
+    
+    .gsc-cursor-page, a.gsc-trailing-more-results {
+        color: #bb6f02;
+        cursor: pointer;
+    }
+    
+    .gsc-completion-container {
+        cursor: pointer;
+        position: absolute;
+        background-color: #fff;
+        margin-top: -5px;
+        opacity: 0.9;
+        -moz-border-radius-bottomleft: 3px;
+        -moz-border-radius-bottomright: 3px;
+        -webkit-border-bottom-left-radius: 3px;
+        -webkit-border-bottom-right-radius: 3px;
+        border-bottom-left-radius: 3px;
+        border-bottom-right-radius: 3px;
+        -moz-box-shadow: 1px 2px 5px rgba(0,0,0,0.3);
+        -webkit-box-shadow: 1px 2px 5px rgba(0,0,0,0.3);
+        box-shadow: 1px 2px 5px rgba(0,0,0,0.3);
+    }
+    
+    .gsc-completion-selected {
+        background-color: #fe8;
+    }
+	
+	.gsc-cursor-page, .gsc-cursor-current-page, .pagebar a, .pagebar a:visited, .this-page {
+		-moz-border-radius: 4px 4px 4px 4px;
+		background: none repeat scroll 0 0 #F3F3EC;
+		border-bottom: 1px solid #BBBBBB;
+		border-right: 1px solid #DDDDDD;
+		float: left;
+		line-height: 16px;
+		margin-left: 0.8em;
+		padding: 0.3em 0.8em;
+		text-decoration: none;
+		text-shadow: 0 1px 0 #FFFFFF;
+	}
+	
+	.gsc-cursor-page:hover, .pagebar a:hover {
+		border-color: #BBBBBB -moz-use-text-color -moz-use-text-color #DDDDDD;
+		border-right: medium none;
+		border-style: solid none none solid;
+		border-width: 1px medium medium 1px;
+		text-decoration: none;
+		text-shadow: 0 -1px 0 #FFFFFF;
+	}
+	.gsc-cursor-current-page, .this-page {
+		background: none repeat scroll 0 0 #1166CC;
+		border-color: #1166CC -moz-use-text-color -moz-use-text-color #1166CC;
+		border-right: medium none;
+		border-style: solid none none solid;
+		border-width: 1px medium medium 1px;
+		color: #FFFFFF;
+		font-weight: bold;
+		text-shadow: 0 1px 0 #1166CC;
+	}
