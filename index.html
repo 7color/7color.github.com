@@ -23,6 +23,13 @@
              <li><div class="rss"><a href="#">RSS</a></div></li>
              <li class="logo"><a href="#" class="logo_a"> 七彩映像(@7color)</a></li>
          </ul>
+         <div id="search">
+            <form method="get" action="#">
+                    <div id="search-input">
+                    <input type="text" name="s" value="" size="13" id="search-input-input"><input type="submit" id="search-submit" name="" value="OK">
+                    </div>
+            </form>
+        </div>
          </div>
      </div>
 </div>
@@ -33,7 +40,11 @@ Vim 里有个 <a href="http://code.google.com/p/vimwiki/">vimwiki</a> 插件，�
 搭建。为什么要叫做“维基世界”？因为只要你懂一点前端知识，它可以不仅仅是一个简单的知识管理系统，还能成为一个 playground ，任你自由发挥。
 </p>
 
-<h2 id="toc_0.1">为什么要使用 vimwiki</h2>
+<h1 id="toc_1">为什么要使用 vimwiki</h1>
+<h2 id="toc_1.1">为什么要使用 vimwiki</h2>
+<h3 id="toc_1.1.1">为什么要使用 vimwiki</h3>
+<h4 id="toc_1.1.1.1">为什么要使用 vimwiki</h4>
+<h5 id="toc_1.1.1.1.1">为什么要使用 vimwiki</h5>
 <p>
 众所周知，维基语法的作用有三点。1. 使条目更规范。通过一定转换，wiki 能输出为拥有约定俗成格式的HTML；2. 节约编辑时间。 显然，你不用写出完整的HTML标签，也不用在可视化编辑器中点来点去；3. 充分的可读性。使用维基语法书写的文档，即使未被转为HTML，内容的语义也是一目了然，甚至表格也能清晰地阅读。相较而言，UBB什么的简直就是扯淡嘛。
 </p>
@@ -43,7 +54,7 @@ Vim 里有个 <a href="http://code.google.com/p/vimwiki/">vimwiki</a> 插件，�
 </p>
 
 
-<h2 id="toc_0.2">安装 vimwiki</h2>
+<h2 id="toc_1.2">安装 vimwiki</h2>
 <p>
 vimwiki 的安装同其他vim插件一样，把<a href="http://code.google.com/p/vimwiki/downloads/list">下载回来的东西</a>解压到 vimfiles 里就好了。有 zip 包和 vba 包两种格式。其中 vba 是 Vim 独有的插件安装包。推荐使用 vba 安装，因为它能保存你的安装信息，不高兴了还可以卸载（详细说明请<code>:h vba</code>）。要使用这种安装方式，需要有 <strong>vimball</strong> 插件。Windows 下的 gvim 已经自带。如果你还没有这东西，可以先到 <a href="http://www.vim.org">vim.org</a> <a href="http://www.vim.org/scripts/script.php?script_id=1502">自行下载</a>。
 </p>
@@ -64,42 +75,6 @@ else
 endif
 </pre>
 
-<div class="toc">
-<ul>
-<li><a href="#toc_0.1">为什么要使用 vimwiki</a></li>
-<li><a href="#toc_0.2">安装 vimwiki</a></li>
-<li><a href="#toc_0.3">开始使用 vimwiki</a></li>
-<ul>
-<li><a href="#toc_0.3.1">基本的 Wiki 语法</a></li>
-<li><a href="#toc_0.3.2">特殊占位符</a></li>
-<li><a href="#toc_0.3.3">生成HTML</a></li>
-<li><a href="#toc_0.3.4">键操作</a></li>
-<ul>
-<li><a href="#toc_0.3.4.1">快捷键总览</a></li>
-<li><a href="#toc_0.3.4.2">编辑时的按键</a></li>
-</ul>
-</ul>
-<li><a href="#toc_0.4">进阶操作</a></li>
-<ul>
-<li><a href="#toc_0.4.1">日记功能</a></li>
-<li><a href="#toc_0.4.2">多个维基项目</a></li>
-<ul>
-<li><a href="#toc_0.4.2.1">任务管理 TODO-list</a></li>
-<li><a href="#toc_0.4.2.2">编辑表格</a></li>
-</ul>
-</ul>
-<li><a href="#toc_0.5">调教你的 vimwiki</a></li>
-<ul>
-<li><a href="#toc_0.5.1">做一个你自己的模板</a></li>
-<li><a href="#toc_0.5.2">HTML 模板增强</a></li>
-<ul>
-<li><a href="#toc_0.5.2.1">使footer也可以引用 %root_path%</a></li>
-<li><a href="#toc_0.5.2.2">在wiki里使用更多的HTML标签</a></li>
-</ul>
-</ul>
-</ul>
-</ul>
-</div>
 <p>
 如果还没有，就赶快加上吧。
 </p>
@@ -107,17 +82,64 @@ endif
 <p>
 如果你正在使用 <a href="http://www.vim.org/scripts/script.php?script_id=521">MRU</a> ，并且设置了 <code>MRU_Include_Files</code> ，记得把 .wiki 也包括进去。
 </p>
+<div class="toc">
+<ul>
+<li><a href="#toc_1">为什么要使用 vimwiki</a></li>
+<ul>
+<li><a href="#toc_1.1">为什么要使用 vimwiki</a></li>
+<ul>
+<li><a href="#toc_1.1.1">为什么要使用 vimwiki</a></li>
+<ul>
+<li><a href="#toc_1.1.1.1">为什么要使用 vimwiki</a></li>
+<ul>
+<li><a href="#toc_1.1.1.1.1">为什么要使用 vimwiki</a></li>
+</ul>
+</ul>
+</ul>
+<li><a href="#toc_1.2">安装 vimwiki</a></li>
+<li><a href="#toc_1.3">开始使用 vimwiki</a></li>
+<ul>
+<li><a href="#toc_1.3.1">基本的 Wiki 语法</a></li>
+<li><a href="#toc_1.3.2">特殊占位符</a></li>
+<li><a href="#toc_1.3.3">生成HTML</a></li>
+<li><a href="#toc_1.3.4">键操作</a></li>
+<ul>
+<li><a href="#toc_1.3.4.1">快捷键总览</a></li>
+<li><a href="#toc_1.3.4.2">编辑时的按键</a></li>
+</ul>
+</ul>
+<li><a href="#toc_1.4">进阶操作</a></li>
+<ul>
+<li><a href="#toc_1.4.1">日记功能</a></li>
+<li><a href="#toc_1.4.2">多个维基项目</a></li>
+<ul>
+<li><a href="#toc_1.4.2.1">任务管理 TODO-list</a></li>
+<li><a href="#toc_1.4.2.2">编辑表格</a></li>
+</ul>
+</ul>
+<li><a href="#toc_1.5">调教你的 vimwiki</a></li>
+<ul>
+<li><a href="#toc_1.5.1">做一个你自己的模板</a></li>
+<li><a href="#toc_1.5.2">HTML 模板增强</a></li>
+<ul>
+<li><a href="#toc_1.5.2.1">使footer也可以引用 %root_path%</a></li>
+<li><a href="#toc_1.5.2.2">在wiki里使用更多的HTML标签</a></li>
+</ul>
+</ul>
+</ul>
+</ul>
+</div>
 
 <p>
 装好之后，您可以马上使用 <code>:h vimwiki</code> 查看帮助。相信我，查看帮助文档绝对是最管用的学习方式（虽然耗时更久，但学得更全面，省去许多将来求助搜索引擎的时间）。当然，如果你英文不好，看不太懂，本文的存在就是为了帮助你，别急，慢慢来。
 </p>
 
-<h2 id="toc_0.3">开始使用 vimwiki</h2>
+<h2 id="toc_1.3">开始使用 vimwiki</h2>
 <p>
 使用快捷键 <code>&lt;leader&gt;ww</code> 开始编辑您的第一个 vimwiki 吧！ 首次使用 vimwiki 时， 它默认会在操作系统用户目录（即 <code>~/</code> ）建立一个 vimwiki 文件夹，保存所有你的 wiki 条目。如果你调用 :Vimwiki2HTML 命令把 wiki 条目转为 html 页面，它会创建一个名为 vimwiki_html 的文件夹保存所有生成的 html 文件。
 </p>
 
-<h3 id="toc_0.3.1">基本的 Wiki 语法</h3>
+<h3 id="toc_1.3.1">基本的 Wiki 语法</h3>
 
 <pre>
 = 一级标题 =  
@@ -172,7 +194,7 @@ endif
 <strong>参考</strong> <code>:h vimwiki-syntax</code> 
 </p>
 
-<h3 id="toc_0.3.2">特殊占位符</h3>
+<h3 id="toc_1.3.2">特殊占位符</h3>
 <p>
 在wiki条目中使用以下占位符，能对生成的HTML文件做一些特殊的处理。
 </p>
@@ -189,7 +211,7 @@ endif
 </li>
 </ul>
 
-<h3 id="toc_0.3.3">生成HTML</h3>
+<h3 id="toc_1.3.3">生成HTML</h3>
 <p>
 使用 <code>:Vimwiki2HTML</code> 可以为当前维基条目生成HTML文件，使用 <code>:VimwikiAll2HTML </code> 可以为所有条目生成HTML。您可以为每个维基项目指定 <code>auto_export</code> 选项，这样在wiki文件保存时就会自动生成HTML。个人不建议这样做，因为当条目很大，保存就相当费时。
 </p>
@@ -203,9 +225,9 @@ map &lt;F4&gt; :Vimwiki2HTML&lt;cr&gt;
 </blockquote>
 
 
-<h3 id="toc_0.3.4">键操作</h3>
+<h3 id="toc_1.3.4">键操作</h3>
 
-<h4 id="toc_0.3.4.1">快捷键总览</h4>
+<h4 id="toc_1.3.4.1">快捷键总览</h4>
 <ol>
 <li>
 <code>&lt;leader&gt;ww</code> 在当前窗口打开维基首页
@@ -224,7 +246,7 @@ map &lt;F4&gt; :Vimwiki2HTML&lt;cr&gt;
 </li>
 </ol>
 
-<h4 id="toc_0.3.4.2">编辑时的按键</h4>
+<h4 id="toc_1.3.4.2">编辑时的按键</h4>
 <ol>
 <li>
 尚未建立的词条会被显示为红色（或其他你的 Vim 语法高亮定义的错误颜色），在词条上敲<kbd>回车</kbd>键，可以编辑这个词条。点击 <kbd>Shift-回车</kbd>，在新的分割窗口编辑该词条。编辑好以后点击退格（<kbd>Backspace</kbd>）键，可以返回链入页
@@ -246,9 +268,9 @@ map &lt;F4&gt; :Vimwiki2HTML&lt;cr&gt;
 <hr />
 </p>
 
-<h2 id="toc_0.4">进阶操作</h2>
+<h2 id="toc_1.4">进阶操作</h2>
 
-<h3 id="toc_0.4.1">日记功能</h3>
+<h3 id="toc_1.4.1">日记功能</h3>
 <p>
 使用快捷键 <code>&lt;leader&gt;w&lt;leader&gt;w</code> 可以快速编辑当天的日记。还可以配合 <a href="http://www.vim.org/scripts/script.php?script_id=52">Calendar 插件</a> 轻松管理你的日记。
 </p>
@@ -273,7 +295,7 @@ map &lt;F8&gt; :Calendar&lt;cr&gt;
 <strong>PS:</strong> 按左右键在前后一个月里跳转，按上下键在前后一年跳转。按 <code>t</code> 回到当天。当然，Vim 默认的上下左右 <kbd>hjkl</kbd> 也是能用的。
 </p>
 
-<h3 id="toc_0.4.2">多个维基项目</h3>
+<h3 id="toc_1.4.2">多个维基项目</h3>
 <p>
 您可以配置 <code>g:vimwiki_list</code>，指定多个维基项目，它们各自拥有单独的文件夹。这就允许你把工作维基和生活的琐事记录完全分开。
 </p>
@@ -303,12 +325,12 @@ let g:vimwiki_list = [{'path': 'E:/path/to/vimwiki-1/vimwiki/',
 </p>
 
 
-<h4 id="toc_0.4.2.1">任务管理 TODO-list</h4>
+<h4 id="toc_1.4.2.1">任务管理 TODO-list</h4>
 <p>
 Loading...
 </p>
 
-<h4 id="toc_0.4.2.2">编辑表格</h4>
+<h4 id="toc_1.4.2.2">编辑表格</h4>
 <p>
 Loading...
 </p>
@@ -317,14 +339,14 @@ Loading...
 <hr />
 </p>
 
-<h2 id="toc_0.5">调教你的 vimwiki</h2>
+<h2 id="toc_1.5">调教你的 vimwiki</h2>
 <pre>
 <b>警告!</b> 以下为高级内容，虽然我手把手在教，但毕竟折腾耗时。
 而且您的操作可能因为 vimwiki 将来的版本升级而失效。
 请评估自己的时间成本！
 </pre>
 
-<h3 id="toc_0.5.1">做一个你自己的模板</h3>
+<h3 id="toc_1.5.1">做一个你自己的模板</h3>
 <p>
 vimwiki 生成的HTML会都会链接相应vimwiki_html目录下的style.css。如果你不自己指定，它会自动生成一个默认的。CSS禅意花园的境界是什么来着，仅仅修改 style.css 就能拥有风格完全不同的页面。通过简单修改 style.css ，你完全可以创造自己风格的维基站。加上自定义文档头部和尾部的功能，折腾出一个个人网站来绰绰有余。当然，如果你还在想新闻列表，feed订阅什么的，请赶快走开。毕竟， vimwiki 不是 CMS 。
 </p>
@@ -333,9 +355,9 @@ vimwiki 生成的HTML会都会链接相应vimwiki_html目录下的style.css。�
 可惜的是，并不能指定一个 style.css 的模板，如果你还折腾了一些 JavaScript 增强，就更麻烦了。需要的话请自行把相关文件复制过去吧。当然，你也可以直接把本页面另存为，使用我的模板！具体实现请自己折腾。
 </p>
 
-<h3 id="toc_0.5.2">HTML 模板增强</h3>
+<h3 id="toc_1.5.2">HTML 模板增强</h3>
 
-<h4 id="toc_0.5.2.1">使footer也可以引用 %root_path%</h4>
+<h4 id="toc_1.5.2.1">使footer也可以引用 %root_path%</h4>
 
 <p>
 修改 <strong>$VIMFILES/autoload/vimwiki_html.vim</strong> ，第 1169 行
@@ -377,7 +399,7 @@ call map(lines, 'substitute(v:val, "%root_path%", "'.
 复制到第 141 行 <code>let lines = readfile(expand(VimwikiGet('html_footer')))</code> 之后
 </p>
 
-<h4 id="toc_0.5.2.2">在wiki里使用更多的HTML标签</h4>
+<h4 id="toc_1.5.2.2">在wiki里使用更多的HTML标签</h4>
 <p>
 vimwiki 有一个 g:vimwiki_valid_html_tags 值，可以指定允许写在 wiki 中的HTML标签。 g:vimwiki_valid_html_tags 的默认值是 <code>'b,i,s,u,sub,sup,kbd,br,hr'</code> ，也就是说，当你在 wiki 中输入：
 </p>
@@ -499,8 +521,8 @@ Browser.ie7 = Browser.ie &amp;&amp; navigator.userAgent.indexOf('MSIE 7.0') != -
 String.prototype.trim = function(){ return this.replace(/(^\s*)|(\s*$)/g, ""); };
 //window.onerror = function(){ return true; };
 </pre>
-        </div>
     </div>
+</div>
 <div id="footer">
     <div id="footer-3rd">
         <div ID="footer-text">

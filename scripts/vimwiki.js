@@ -17,6 +17,10 @@ var kwiki = {
 };
 
 $(document).ready(function() {
+	if(document.body.clientHeight < document.documentElement.clientHeight){
+		$('#container').css('height', document.documentElement.clientHeight - 80);
+		$(window).resize(function(){$('#container').css('height', document.documentElement.clientHeight - 80)});
+	}
 	var inner_width = window.innerWidth || document.documentElement.clientWidth;
     if (inner_width >= 460) {
         var toggler = $('<div class="toggler" title="点击展开/收起，Shift+Z 隐藏或打开">目录</div>'),

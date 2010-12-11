@@ -13,18 +13,39 @@ TAGS: White, Blue, flexible-width, two-columns, left-sidebar
 	a,a:visited {text-decoration:none;color:#1166cc;}
 	a:hover {text-decoration:underline;color:#1166cc;}
 	li h3 {color:#222;}
-	li {color:#aaccee;}
+	/*li {color:#aaccee;}*/
 	hr {height:1px;color:#ccccff;}
-	h3 {font-family:Microsoft YaHei,calibri,verdana;font-size:20px;font-weight:normal;}
+	h1,h2,h3,h4,h5{font-family:Microsoft YaHei,calibri,verdana;font-weight:normal;}
+	h1{color:#1166CC; text-align:center}
+	h3 {color:#4B92F1}
+	h4{color:#555577}
 	pre {
 	white-space: pre-wrap; /* css-3 */
 	white-space: -moz-pre-wrap; /* Mozilla, since 1999 */
 	white-space: -pre-wrap; /* Opera 4-6 */
 	white-space: -o-pre-wrap; /* Opera 7 */
 	word-wrap: break-word; /* Internet Explorer 5.5+ */
+    background-color: #EEEEFF;
+    border: 1px solid #DDDDDD;
+    font-size: 90%;
+    margin: 0 15px;
+	color:#4B92F1
+    overflow: hidden;
+    padding: 0 0.4em;
+    text-align: left;
+	font-family:Microsoft YaHei,calibri,verdana;
 	}
-
-/*
+	code{background-color: #EEEEFF;font-family: "Consolas","Bitstream Vera Sans Mono","Courier New",Courier,monospace !important;border: 1px solid #DDDDDD;padding: 0.1em 0.2em;}
+	blockquote {
+	background-color: #EEEEFF;
+	border-left: 5px solid #DDDDDD;
+	font: 14px/22px normal "Consolas","Bitstream Vera Sans Mono","Courier New",Courier,monospace !important;
+	margin: 10px 50px;
+	padding-bottom: 10px;
+	padding-left: 10px;
+	padding-top: 10px;
+	}
+	/*
 LAYOUT: Two-Column (Left)
 DESCRIPTION: Two-column fluid layout with one sidebars left of content
 */
@@ -59,6 +80,16 @@ DESCRIPTION: Two-column fluid layout with one sidebars left of content
 	clear:both;
 	width:100%;
 	}
+	
+	div#search{
+	position:absolute;
+	float:left;
+	padding:1px 0px 0px 696px;
+	}
+	
+	#search-input {width:182px;height:28px;padding:2px 0px 2px 25px;background:url("../images/search-input.png") 0 0 no-repeat;}
+	#search-input-input {height:16px;width:115px;background-image:url(../images/front/bg_container.gif);background-repeat : repeat-x;background-position :left -8px;padding-top:3px;border:solid 1px #cccccc;}
+	#search-submit {border-width:0px;background: transparent;cursor: pointer;font-size:12px;color:#fff;font-weight:bold;margin:3px 3px;padding:0px;font-family:verdana;}
 	
 /*Menu*/
 	div#menu {
@@ -143,10 +174,10 @@ DESCRIPTION: Two-column fluid layout with one sidebars left of content
 /*Content*/
 	h2{
 	font-family:Microsoft YaHei,calibri,verdana;
-	font-size:34px;
 	font-weight:normal;
 	line-height:1.2;
 	margin:0px 0px 8px 0px;
+	color: #1166CC;
 	}
 
 	h2 span {color:#dd0000;font-family:verdana;font-size:36px;
