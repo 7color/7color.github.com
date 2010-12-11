@@ -84,7 +84,7 @@ DESCRIPTION: Two-column fluid layout with one sidebars left of content
 	div#search{
 	position:absolute;
 	float:left;
-	padding:1px 0px 0px 696px;
+	padding:1px 0px 0px 928px;
 	}
 	
 	#search-input {width:182px;height:28px;padding:2px 0px 2px 25px;background:url("../images/search-input.png") 0 0 no-repeat;}
@@ -102,7 +102,7 @@ DESCRIPTION: Two-column fluid layout with one sidebars left of content
 	text-align:left;
 	}
 	
-	div#menu_center {
+	div#menu_center,div#search {
 	width:960px;
 	margin:0 auto;
 	}
