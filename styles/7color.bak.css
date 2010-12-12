@@ -60,6 +60,7 @@ DESCRIPTION: Two-column fluid layout with one sidebars left of content
 	text-align:left;	
 	}
 	div#container {
+	width:100%;
 	background-image:url(../images/bg_container.gif);
 	background-repeat : repeat-x;
 	}
@@ -341,8 +342,19 @@ DESCRIPTION: Two-column fluid layout with one sidebars left of content
 	}
 	
 	.toc {
+	display: none;
 	overflow: auto;
 	overflow-x: hidden;
+	border: 1px solid #F0C81E;
+	border-radius: 0 0 1px 1px;
+	-moz-border-radius: 0 0 1px 1px;
+	color: #999;
+	background: #0C1F2C;
+	background: rgba(10,30,40,0.85);
+	padding: 12px;
+	box-shadow: 0 1px 8px #000;
+	-webkit-box-shadow: 0 1px 8px #000;
+	-moz-box-shadow: 0 1px 8px #000;
 	}
 	
 	.tocWrap .toggler {
@@ -357,3 +369,5 @@ DESCRIPTION: Two-column fluid layout with one sidebars left of content
 	cursor: pointer;
 	}
 	.toc ul {margin: 0;}
+	.toc li {color: #eff;list-style-type: inherit;}
+	.toc a {color: #eff;}

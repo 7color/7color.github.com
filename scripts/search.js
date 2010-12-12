@@ -1,9 +1,8 @@
 $(function(){
-	if(document.body.clientHeight < document.documentElement.clientHeight){
-		$('#container').css('height', document.documentElement.clientHeight - 80);
-		$(window).resize(function(){$('#container').css('height', document.documentElement.clientHeight - 80)});
+	if($('body').innerHeight() < $(window).height()){
+			$('#container').css('height', $(window).height() - 80);
+			$(window).resize(function(){$('#container').css('height', $(window).height() - 80)});
 	}
-
 });
 
 google.load('search', '1', {language:'zh-CN', "nocss":true});

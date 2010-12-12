@@ -11,10 +11,10 @@
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
     <script type="text/javascript">
 	$(function(){
-    	if(document.body.clientHeight < document.documentElement.clientHeight){
-		$('#container').css('height', document.documentElement.clientHeight - 80);
-		$(window).resize(function(){$('#container').css('height', document.documentElement.clientHeight - 80)});
-	}
+		if($('body').innerHeight() < $(window).height()){
+				$('#container').css('height', $(window).height() - 80);
+				$(window).resize(function(){$('#container').css('height', $(window).height() - 80)});
+		}
 	});
     </script>
 </head>
