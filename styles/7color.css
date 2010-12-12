@@ -179,12 +179,14 @@ DESCRIPTION: Two-column fluid layout with one sidebars left of content
 	font-family:Microsoft YaHei,calibri,verdana;
 	font-weight:normal;
 	line-height:1.2;
-	margin:0px 0px 8px 0px;
+	margin:0 0 10px;
+	padding-bottom:6px;
+	border-bottom:1px solid #DEDFE1;
 	color: #1166CC;
+	
 	}
 
-	h2 span {color:#dd0000;font-family:verdana;font-size:36px;
-	}
+	h2 span {color:#dd0000;font-family:verdana;font-size:36px;}
 
 	.entry-title,.entry-meta {
 	clear:both;
