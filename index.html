@@ -10,7 +10,7 @@
     <link rel="Stylesheet" type="text/css" href="styles/7color.css" />
     <script type="text/javascript">var root_path = '';</script>
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
-    <script type="text/javascript" src="scripts/vimwiki.js"></script>
+    <script type="text/javascript" src="scripts/7color.js"></script>
 </head>
 <body>
 <div id="header">
@@ -80,53 +80,6 @@ endif
 <p>
 如果还没有，就赶快加上吧。
 </p>
-<div class="toc">
-<ul>
-<li><a href="#toc_1">为什么要使用 vimwiki</a></li>
-<ul>
-<li><a href="#toc_1.1">为什么要使用 vimwiki</a></li>
-<ul>
-<li><a href="#toc_1.1.1">为什么要使用 vimwiki</a></li>
-<ul>
-<li><a href="#toc_1.1.1.1">为什么要使用 vimwiki</a></li>
-<ul>
-<li><a href="#toc_1.1.1.1.1">为什么要使用 vimwiki</a></li>
-</ul>
-</ul>
-</ul>
-<li><a href="#toc_1.2">安装 vimwiki</a></li>
-<li><a href="#toc_1.3">开始使用 vimwiki</a></li>
-<ul>
-<li><a href="#toc_1.3.1">基本的 Wiki 语法</a></li>
-<li><a href="#toc_1.3.2">特殊占位符</a></li>
-<li><a href="#toc_1.3.3">生成HTML</a></li>
-<li><a href="#toc_1.3.4">键操作</a></li>
-<ul>
-<li><a href="#toc_1.3.4.1">快捷键总览</a></li>
-<li><a href="#toc_1.3.4.2">编辑时的按键</a></li>
-</ul>
-</ul>
-<li><a href="#toc_1.4">进阶操作</a></li>
-<ul>
-<li><a href="#toc_1.4.1">日记功能</a></li>
-<li><a href="#toc_1.4.2">多个维基项目</a></li>
-<ul>
-<li><a href="#toc_1.4.2.1">任务管理 TODO-list</a></li>
-<li><a href="#toc_1.4.2.2">编辑表格</a></li>
-</ul>
-</ul>
-<li><a href="#toc_1.5">调教你的 vimwiki</a></li>
-<ul>
-<li><a href="#toc_1.5.1">做一个你自己的模板</a></li>
-<li><a href="#toc_1.5.2">HTML 模板增强</a></li>
-<ul>
-<li><a href="#toc_1.5.2.1">使footer也可以引用 %root_path%</a></li>
-<li><a href="#toc_1.5.2.2">在wiki里使用更多的HTML标签</a></li>
-</ul>
-</ul>
-</ul>
-</ul>
-</div>
 
 <p>
 如果你正在使用 <a href="http://www.vim.org/scripts/script.php?script_id=521">MRU</a> ，并且设置了 <code>MRU_Include_Files</code> ，记得把 .wiki 也包括进去。
@@ -532,5 +485,10 @@ String.prototype.trim = function(){ return this.replace(/(^\s*)|(\s*$)/g, ""); }
         </div>
     </div>
 </div>
+<div style="position: absolute;" id="sidecatalog">
+    <div id="sidebar" class="sidebar"></div>
+    <a title="返回顶部" id="gotop" href="#" class="gotop"></a>
+</div>
+<div style="display: none; position: absolute;" id="side-catalog-content"></div>
 </body>
 </html>

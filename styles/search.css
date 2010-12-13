@@ -1,3 +1,4 @@
+	/* Search */
     table{margin:0;}
 	td,td{border:none;padding:0;}
 
@@ -25,14 +26,10 @@
         top: 0;
     }
 	
-	div#search,form.gsc-search-box{
-	float:right;
-	padding:1px 57px 0 0;
-	}
 	
-	#search-input,table.gsc-search-box {width:182px;height:28px;padding:2px 0px 2px 25px;background:url(images/search-input.png) 0 0 no-repeat;}
-	#search-input-input,input.gsc-input {height:16px;width:115px;background-image:url(images/bg_container.gif);background-repeat : repeat-x;background-position :left -8px;padding-top:3px;border:solid 1px #cccccc;}
-	#search-submit,input.gsc-search-button {border-width:0px;background: transparent;cursor: pointer;font-size:12px;color:#fff;font-weight:bold;margin:3px 3px;padding:0px;font-family:verdana;}
+	table.gsc-search-box {width:182px;height:28px;padding:2px 0px 2px 25px;background:url(../images/search-input.png) 0 0 no-repeat;}
+	input.gsc-input {height:16px;width:115px;background-image:url(../images/bg_container.gif);background-repeat : repeat-x;background-position :left -8px;padding-top:3px;border:solid 1px #cccccc;margin-left:28px;}
+	input.gsc-search-button {border-width:0px;background: transparent;cursor: pointer;font-size:12px;color:#fff;font-weight:bold;margin:3px 3px;padding:0px;font-family:verdana;}
     
     .gsc-branding {
         position: absolute;
