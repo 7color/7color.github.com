@@ -376,16 +376,16 @@ $(function(){
 	if($('body').innerHeight() < $(window).height()){
 		$('#container').css('height', $(window).height() - 80);
 		$(window).resize(function(){$('#container').css('height', $(window).height() - 80)});
-	}
-	
+		$("#sidecatalog").hide();
+	}else{
 	//Category 插件加载
-	color.sidecatalog.init();
-	color.sidecatalog.resize();
-	color.sidecatalog.scroll();
-	$(window).scroll(function(){color.sidecatalog.scroll()})
-	$('.sidebar').click(color.sidecatalog.toggle());
-	$(window).resize(function(){color.sidecatalog.resize()});
-	
+		color.sidecatalog.init();
+		color.sidecatalog.resize();
+		color.sidecatalog.scroll();
+		$(window).scroll(function(){color.sidecatalog.scroll()})
+		$('.sidebar').click(color.sidecatalog.toggle());
+		$(window).resize(function(){color.sidecatalog.resize()});
+	}
     //链接新窗口打开
     $('a[href]').each(function() {
         if (this.href.indexOf(window.location.host) == -1) $(this).attr({target: '_blank', title: this.href });
