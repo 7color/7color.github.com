@@ -341,13 +341,13 @@ color.sidecatalog.resize = function(e) {
     color.sidecatalog.vHeight = totalHeight - 40;
 
     color.tools.fixable(sidecatalog, {
-        top: ($(window).height() - 150),
+        top: ($(window).height() - 160),
         right: (0)
     });
     color.tools.fixable(side_catalog_content, {
         overflow: "hidden",
         height: totalHeight,
-        top: ($(window).height() - totalHeight - 60),
+        top: ($(window).height() - totalHeight - 70),
         right: (27)
     });
     var side_title_panel = $("#side-title-panel");

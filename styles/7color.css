@@ -1,3 +1,4 @@
+@charset "utf-8";
 /*
 THEME NAME: 7Color
 */
@@ -365,7 +366,7 @@ DESCRIPTION: Two-column fluid layout with one sidebars left of content
 	#side-catalog-content h2,#side-catalog-content h3,#side-catalog-content h4 {
 		margin:0;
 		padding:0;
-		font-family:arial,ËÎÌå,sans-serif;
+		font-family:arial,å®‹ä½“,sans-serif;
 	}
 	#side-catalog-content h2 {
 		background: url(../images/list-dot.gif) no-repeat scroll 10px 8px transparent;
