@@ -24,10 +24,10 @@ color.tools.loadCssFile = function(href) {
 color.tools.fixable = function(elem, options) {
     var elem_obj = $(elem);
     if (elem_obj) {
-        if ($.browser.msie && $.browser.version < 7 && $.support.style) {
+        if ($.browser.msie && $.browser.version < 7) {
             elem_obj.css("position", "absolute");
             var offset_height = (options.top || $(window).height());
-            elem_obj[0].style.setExpression("top", "eval((document.documentElement||document.body).scrollTop+" + offset_height + ") + 'px'")
+			elem_obj[0].style.setExpression("top", "eval((document.documentElement||document.body).scrollTop+" + offset_height + ") + 'px'")
         } else {
 			elem_obj.css("position", "fixed");
         }
@@ -386,6 +386,14 @@ $(function(){
 		$('.sidebar').click(color.sidecatalog.toggle());
 		$(window).resize(function(){color.sidecatalog.resize()});
 	}
+	//IE6 HACK
+	if($.browser.msie && $.browser.version < 7){
+		//PNG图片透明
+		color.tools.loadJsFile("unitpngfix.js");
+		//缓存图片
+		document.execCommand("BackgroundImageCache", false, true);
+	}
+	
     //链接新窗口打开
     $('a[href]').each(function() {
         if (this.href.indexOf(window.location.host) == -1) $(this).attr({target: '_blank', title: this.href });
