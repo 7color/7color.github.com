@@ -2,7 +2,7 @@
 AUTHOR: 7Color
 */
 
-var color = {};
+var color = color || {};
 color.tools = {};
 //加载js
 color.tools.loadJsFile = function(src) {
@@ -79,8 +79,8 @@ color.sidecatalog.contentScroll = function(step_length) {
     height = height - height % color.sidecatalog.step;
 	
 	side_title_list.animate({ 
-		top: height
-  	}, 
+		top: height + "px"
+  	},
   	300, "linear");
 };
 //初始化
@@ -222,7 +222,7 @@ color.sidecatalogDomInit = function() {
         obj.item = h_tag;
         h_tag = null
     });
-	
+
     side_title_panel.appendChild(side_title_list);
     var side_catalog_content = $("#side-catalog-content");
     side_catalog_up.innerHTML = "<div></div>";

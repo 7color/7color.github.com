@@ -3,7 +3,7 @@ THEME NAME: 7Color
 */
 
 /*Common CSS*/
-	body {margin:0px;padding:0px;font-size:14px;line-height:1.7;font-family:verdana;color:#222;_background:url(about:blank) fixed;}
+	body {margin:0px;padding:0px;font-size:14px;line-height:1.7;font-family:verdana,Tahoma,sans-serif;color:#222;_background:url(about:blank) fixed;}
 	a,a:visited {text-decoration:none;color:#1166cc;}
 	a:hover {text-decoration:underline;color:#1166cc;}
 	li h3 {color:#222;}
@@ -17,6 +17,7 @@ THEME NAME: 7Color
 	h5{padding-top:.4em}
 	h5{padding-top:.4em}
 	h6{padding-top:.2em}
+	pre,code{font:1em/1.5 'andale mono','monotype.com','lucida console',monospace;}
 	pre {
 	white-space: pre-wrap; /* css-3 */
 	white-space: -moz-pre-wrap; /* Mozilla, since 1999 */
@@ -29,11 +30,11 @@ THEME NAME: 7Color
     margin: 10px 15px;
 	color:#4B92F1
     overflow: hidden;
-    padding: 0 0.4em;
+    padding: 1.5em;
     text-align: left;
 	font-family:Microsoft YaHei,calibri,verdana;
 	}
-	code{background-color: #EEEEFF;font-family: "Consolas","Bitstream Vera Sans Mono","Courier New",Courier,monospace !important;border: 1px solid #DDDDDD;padding: 0.1em 0.2em;}
+	code{background-color: #EEEEFF;border: 1px solid #DDDDDD;padding: 0.1em 0.2em;}
 	blockquote {
 	background-color: #EEEEFF;
 	border-left: 5px solid #DDDDDD;
