@@ -9,7 +9,7 @@ color.tools.loadJsFile = function(src) {
     var head_script = document.createElement("script");
     head_script.setAttribute("type", "text/javascript");
     head_script.setAttribute("src", src);
-    head_script.setAttribute("defer", "defer");
+    //head_script.setAttribute("defer", "defer");
     document.getElementsByTagName("head")[0].appendChild(head_script)
 };
 //加载css
@@ -386,10 +386,11 @@ $(function(){
 		$('.sidebar').click(color.sidecatalog.toggle());
 		$(window).resize(function(){color.sidecatalog.resize()});
 	}
+	
 	//IE6 HACK
 	if($.browser.msie && $.browser.version < 7){
 		//PNG图片透明
-		color.tools.loadJsFile("unitpngfix.js");
+		color.tools.loadJsFile("scripts/unitpngfix.js");
 		//缓存图片
 		document.execCommand("BackgroundImageCache", false, true);
 		//链接虚框

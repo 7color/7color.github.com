@@ -167,7 +167,7 @@ DESCRIPTION: Two-column fluid layout with one sidebars left of content
 	background-image:url(../images/bg_post.gif);background-repeat : repeat-x; background-position:left 2px;
 	border-top:1px solid #dddddd;
 	padding:10px 20px;
-	margin:0px 5px 70px 5px;
+	margin:8px 5px 70px 5px;
 	}
 
 	.entry-content-width,.navigation {width:660px;_overflow:hidden;}
