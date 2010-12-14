@@ -40,7 +40,7 @@ color.sidecatalog = {};
 color.sidecatalog.step = 20;
 color.sidecontentList = [];
 color.sidesubitemList = [];
-color.sidecatalog.vHeight = 80;
+color.sidecatalog.vHeight = 80;//side-title-panel默认高度
 color.sidecatalog.togglestatus = false;
 //检查sidecatalog是否显示
 color.sidecatalog.checkToShow = function() {
@@ -74,7 +74,6 @@ color.sidecatalog.contentScroll = function(step_length) {
         height = Math.min( - totalHeight + vHeight, 0);
         status = (status == "top") ? "both": "bottom"
     }
-
     color.sidecatalog.statuschange(status);
     height = height - height % color.sidecatalog.step;
 	
@@ -238,8 +237,8 @@ color.sidecatalogDomInit = function() {
             e.preventDefault()
         })
     }
-    D = null;
-    side_title_list = side_title_panel = side_catalog_up = side_catalog_down = F = null
+    a_links = null;
+    side_title_list = side_title_panel = side_catalog_up = side_catalog_down = side_catalog_content = null
 };
 //Animate 自定义效果
 color.sidecatalog.scrollto = function(index) {
@@ -302,13 +301,18 @@ color.sidecatalog.tofocus = function() {
                     half_vHeight = half_vHeight - half_vHeight % 20;
                     var temp_height = Math.min(vHeight - height - half_vHeight, 0);
                     var status = "normal";
-                    if (temp_height + totalHeight <= vHeight) {
-                        temp_height = -totalHeight + vHeight;
+					
+					console.log(temp_height,totalHeight,vHeight)
+					
+                    if (temp_height + totalHeight <= vHeight) {//-140 420 220
+                        temp_height = -totalHeight + vHeight;  // -420 + 220
                         status = "bottom"
                     }
+
                     if (temp_height == 0) {
                         status = (status == "bottom") ? "both": "top"
                     }
+
                     color.sidecatalog.statuschange(status);
                     side_title_list.css("top", temp_height);
                     $(current.item).addClass("on")
