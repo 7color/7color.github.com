@@ -264,7 +264,7 @@ color.sidecatalog.toggle = function() {
         toggle_status = !toggle_status;
         color.sidecatalog.togglestatus = toggle_status;
         var scroll_event = color.sidecatalog.tofocus;
-        if ($.browser.msie && $.browser.version < 7 && $.support.style) {
+        if ($.browser.msie) {//IE时延迟加载
             scroll_event = color.sidecatalog.delayfocus;
 
         }
@@ -357,7 +357,7 @@ color.sidecatalog.resize = function(e) {
     color.sidecatalog.tofocus()
 };
 //scroll事件
-color.sidecatalog.scroll = function(B) {
+color.sidecatalog.scroll = function(e) {
     var sidecatalog = $("#sidecatalog");
     if (!color.sidecatalog.checkToShow()) {
         $(".sidebar").removeClass('show');
@@ -378,7 +378,7 @@ $(function(){
 		$(window).resize(function(){$('#container').css('height', $(window).height() - 80)});
 		$("#sidecatalog").hide();
 	}else{
-	//Category 插件加载
+		//Category 插件加载
 		color.sidecatalog.init();
 		color.sidecatalog.resize();
 		color.sidecatalog.scroll();

@@ -10,10 +10,13 @@ THEME NAME: 7Color
 	li h3 {color:#222;}
 	/*li {color:#aaccee;}*/
 	hr {height:1px;color:#ccccff;}
-	h1,h2,h3,h4,h5{font-family:Microsoft YaHei,calibri,verdana;font-weight:normal;}
+	h1,h2,h3,h4,h5,h6{font-family:Microsoft YaHei,calibri,verdana;font-weight:normal;margin:0;padding:0;}
 	h1{color:#1166CC;}
-	h3 {color:#4B92F1}
-	h4{color:#555577}
+	h3 {color:#4B92F1;padding-top:.8em;}
+	h4{color:#555577;padding-top:.6em;}
+	h5{padding-top:.4em}
+	h5{padding-top:.4em}
+	h6{padding-top:.2em}
 	pre {
 	white-space: pre-wrap; /* css-3 */
 	white-space: -moz-pre-wrap; /* Mozilla, since 1999 */
@@ -23,7 +26,7 @@ THEME NAME: 7Color
     background-color: #EEEEFF;
     border: 1px solid #DDDDDD;
     font-size: 90%;
-    margin: 0 15px;
+    margin: 10px 15px;
 	color:#4B92F1
     overflow: hidden;
     padding: 0 0.4em;
@@ -142,9 +145,8 @@ DESCRIPTION: Two-column fluid layout with one sidebars left of content
 	font-family:Microsoft YaHei,calibri,verdana;
 	font-weight:normal;
 	line-height:1.2;
-	margin:0 0 10px;
 	padding-bottom:6px;
-	padding-top:30px;
+	padding-top:20px;
 	border-bottom:1px solid #DEDFE1;
 	color: #1166CC;
 	}
