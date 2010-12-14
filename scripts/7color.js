@@ -264,7 +264,7 @@ color.sidecatalog.toggle = function() {
         toggle_status = !toggle_status;
         color.sidecatalog.togglestatus = toggle_status;
         var scroll_event = color.sidecatalog.tofocus;
-        if ($.browser.msie) {//IE时延迟加载
+        if ($.browser.msie && $.browser.version < 7) {//IE时延迟加载
             scroll_event = color.sidecatalog.delayfocus;
 
         }
@@ -392,12 +392,17 @@ $(function(){
 		color.tools.loadJsFile("unitpngfix.js");
 		//缓存图片
 		document.execCommand("BackgroundImageCache", false, true);
+		//链接虚框
+		$('a[href]').each(function() {
+        	if (this.href.indexOf(window.location.host) == -1) $(this).attr({target: '_blank', title: this.href });
+			this.hideFocus = true;
+    	});
+	}else{
+		//链接新窗口打开
+		$('a[href]').each(function() {
+			if (this.href.indexOf(window.location.host) == -1) $(this).attr({target: '_blank', title: this.href });
+		});
 	}
-	
-    //链接新窗口打开
-    $('a[href]').each(function() {
-        if (this.href.indexOf(window.location.host) == -1) $(this).attr({target: '_blank', title: this.href });
-    });
 	
 	//代码高亮
     var syntaxHighlight = function() {
