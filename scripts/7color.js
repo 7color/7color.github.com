@@ -83,10 +83,11 @@ color.sidecatalog.contentScroll = function(step_length) {
 };
 //初始化
 color.sidecatalog.init = function() {
-    if ($(".toc").size == 0) {
-        $("#sidebar").css("visibility", "hidden");
-    } else {
+    //if ($(".toc").size() == 0) {
+        //$("#sidebar").css("visibility", "hidden");
+    //} else {
         color.sidecatalog.contentbuild();
+		
         $("#side-catalog-up").mousedown(
         function() {
             clearInterval(color.timer.ele_side_catalog_scroll);
@@ -141,7 +142,7 @@ color.sidecatalog.init = function() {
                 $(this).addClass("hover")
               }
           });
-    }
+    //}
 };
 //sidecatalog 向上向下箭头状态
 color.sidecatalog.statuschange = function(status) {
@@ -379,7 +380,7 @@ $(function(){
 		$(window).resize(function(){$('#container').css('height', $(window).height() - 80)});
 		$("#sidecatalog").hide();
 	}else{
-		//Category 插件加载
+		//当高度大于一屏时,加载 Category
 		color.sidecatalog.init();
 		color.sidecatalog.resize();
 		color.sidecatalog.scroll();

@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>Wiki索引 - 七彩映像.Wiki</title>
+    <title>Zend_Paginator 相关 - 七彩映像.Wiki</title>
     <meta name="Keywords" content="7color,seven color,七彩映像,vim,php,js" />
     <meta name="Description" content="记录我的所学所得" />
     <link href="images/favicon.ico" rel="SHORTCUT ICON" type="image/x-icon" />
@@ -33,36 +33,33 @@
 </div>
 <div id="container">
     <div id="content">
-<h1 id="toc_1" class="justcenter">七彩映像.Wiki 索引</h1>
-<h2 id="toc_1.1">Zend Framework</h2>
+<h1 id="toc_1" class="justcenter">Zend_Paginator 相关</h1>
+<h2 id="toc_1.1">Scrolling Style</h2>
 <ul>
 <li>
-<a href="Zend_Paginator.html">Zend_Paginator</a>
+<code>All</code> A scrolling style that returns every page in the collection.Usefun when it is necessary to make every page
+  available at once -- For example,when using a dropdow menu pagination control.
 </li>
 <li>
-Zend_Application
+<code>Elastic</code> A google-like scrolling style. Incrementally expands the range to about twice the given page range, then
+  behaves like a slider. See the example link. <a href="http://www.google.com/search?q=Zend+Framework">Google Paginator</a>
 </li>
 <li>
-Zend_Db
+<code>Jumping</code> A scrolling style in which the cursor advances to the upper bound of the page range, the page range
+  "jumps" to the next section, and the cursor moves back to the beginning of the range.<br>
 </li>
 <li>
-Zend_Controller_Action
+<code>Sliding</code> A Yahoo! Search-link scrolling style. The cursor will advance to the middle of the range, then remain
+  there until the user reaches the end of the page set, at which point it will continue on to the end of the range and
+  the last page in the set. See the example link. <a href="http://search.yahoo.com/search?p=Zend+Framework">Yahoo Paginator</a>
 </li>
 </ul>
-
-<pre class="brush: js">
-function $(id) { return document.getElementById(id); }
-var Browser = {
-	ie:     !!(window.attachEvent &amp;&amp; !window.opera),
-	opera:  !!window.opera,
-	safari: navigator.userAgent.indexOf('Safari') != -1,
-	gecko:  navigator.userAgent.indexOf('Gecko') != -1 &amp;&amp; navigator.userAgent.indexOf('KHTML') == -1
-};
-Browser.ie6 = Browser.ie &amp;&amp; navigator.userAgent.indexOf('MSIE 6.0') != -1;
-Browser.ie7 = Browser.ie &amp;&amp; navigator.userAgent.indexOf('MSIE 7.0') != -1;
-String.prototype.trim = function(){ return this.replace(/(^\s*)|(\s*$)/g, ""); };
-//window.onerror = function(){ return true; };
-</pre>
+<blockquote>
+<strong>All</strong> 显示所有页数 <code>$pagination-&gt;count()</code>,下拉列表时使用.<br>
+<strong>Elastic</strong> 显示页数 <code>PageRange</code> 随当前页数 <code>CurrentPageNumber</code> 的增加而增加.<br>
+<strong>Jumping</strong> 当当前页数 <code>CurrentPageNumber % PageRange == 0</code> 时,重新设置页数范围.<br>
+<strong>Sliding</strong> 当前页数 <code>CurrentPageNumber</code> 始终居中于页数范围 <code>PageRange</code>.<br>
+</blockquote>
     </div>
 </div>
 <div id="footer">
