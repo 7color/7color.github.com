@@ -207,7 +207,7 @@ DESCRIPTION: Two-column fluid layout with one sidebars left of content
 	}
 
 	.info {
-	width:48px;height:58px;background-position:left top;background-image:url(../images/icon_info.png);background-repeat : no-repeat;float:left;margin:0px 4px 10px 0px;
+	width:48px;height:58px;background-position:left top;background-image:url(../images/icon_info.png);background-repeat : no-repeat;float:left;margin:0px 4px 0px 0px;
 	}
 	
 	
