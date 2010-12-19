@@ -2,15 +2,21 @@
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>Wiki索引 - 七彩映像.Wiki</title>
+    <title>About me - 七彩映像.Wiki</title>
     <meta name="Keywords" content="7color,seven color,七彩映像,vim,php,js" />
     <meta name="Description" content="记录我的所学所得" />
     <link href="images/favicon.ico" rel="SHORTCUT ICON" type="image/x-icon" />
     <link rel="Stylesheet" type="text/css" href="styles/base.css" />
     <link rel="Stylesheet" type="text/css" href="styles/7color.css" />
-    <script type="text/javascript">var root_path = '';</script>
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
-    <script type="text/javascript" src="scripts/7color.js"></script>
+    <script type="text/javascript">
+	$(function(){
+		if($('body').innerHeight() < $(window).height()){
+			$('#container').css('height', $(window).height() - 80);
+			$(window).resize(function(){$('#container').css('height', $(window).height() - 80)});
+		}
+	});
+    </script>
 </head>
 <body>
 <div id="header">
@@ -18,9 +24,8 @@
          <div id="menu_center">
              <ul>
                  <li class="page_item"><a href="/"> Home</a></li>	
-                 <li class="page_item"><a href="diary/"> Diary</a></li>	
-                 <li class="page_item"><a href="todo/"> Todo</a></li>	
-                 <li class="page_item"><a href="#"> About</a></li>	
+                 <li class="page_item"><a href="diary/diary.html"> Diary</a></li>	
+                 <li class="page_item"><a href="#"> Other</a></li>	
                  <li><div class="rss"><a href="https://github.com/7color/7color.github.com/commits/master.atom">RSS</a></div></li>
                  <li class="logo"><a href="http://t.qq.com/sevencolor" class="logo_a"> 七彩映像(@7color)</a></li>
              </ul>
@@ -34,43 +39,18 @@
 </div>
 <div id="container">
     <div id="content">
-<h1 id="toc_1" class="justcenter">七彩映像.Wiki 索引</h1>
-<h2 id="toc_1.1">Zend Framework</h2>
-<ul>
-<li>
-<a href="Zend_Paginator.html">Zend_Paginator</a>
-</li>
-<li>
-Zend_Application
-</li>
-<li>
-Zend_Db
-</li>
-<li>
-<a href="Zend_Controller.html">Zend_Controller</a>
-</li>
-</ul>
-<h2 id="toc_1.2">Javascript</h2>
-<ul>
-<li>
-<a href="tool_resource.html">工具 &amp; 资源</a>
-</li>
-</ul>
-<h2 id="toc_1.3">GIT &amp; VimWiki</h2>
-<ul>
-<li>
-<a href="git.html">Git安装与配置</a>
-</li>
-<li>
-<a href="git_wiki.html">Github 搭建个人wiki</a>
-</li>
-</ul>
-<h2 id="toc_1.4">Vim</h2>
-<ul>
-<li>
-<a href="vim_pattern_instance.html">Vim 正则实例</a>
-</li>
-</ul>
+        <div class="info"></div>
+        <h2 class="page-title">About Me</h2>
+        <p>My name is 7color, I come from Hefei.</p>
+        <p>Working almost 3 years in the IT industry.</p>
+        <p>Tag: PHP,JS,VIM etc.</p>
+        <p>----------------------</p>
+        <p>I'm happy to have my girlfriend in my life~</p>
+        <p>This is my contact information below:</p>
+        <ul>
+        	<li>voow(at).qq.com</li>
+        	<li>QQ:279942479</li>
+        </ul>
     </div>
 </div>
 <div id="footer">
@@ -80,10 +60,5 @@ Zend_Db
         </div>
     </div>
 </div>
-<div id="sidecatalog" style="position:absolute;display:none;">
-    <div class="sidebar" id="sidebar"></div>
-    <a class="gotop" href="#" id="gotop" title="返回顶部"></a>
-</div>
-<div id="side-catalog-content" style="position:absolute;display:none;"></div>
 </body>
 </html>

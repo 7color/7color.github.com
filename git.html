@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Git安装与配置 - 七彩映像.Wiki</title>
+    <meta name="Keywords" content="7color,seven color,七彩映像,vim,php,js" />
+    <meta name="Description" content="记录我的所学所得" />
+    <link href="images/favicon.ico" rel="SHORTCUT ICON" type="image/x-icon" />
+    <link rel="Stylesheet" type="text/css" href="styles/base.css" />
+    <link rel="Stylesheet" type="text/css" href="styles/7color.css" />
+    <script type="text/javascript">var root_path = '';</script>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+    <script type="text/javascript" src="scripts/7color.js"></script>
+</head>
+<body>
+<div id="header">
+     <div id="menu">
+         <div id="menu_center">
+             <ul>
+                 <li class="page_item"><a href="/"> Home</a></li>	
+                 <li class="page_item"><a href="diary/"> Diary</a></li>	
+                 <li class="page_item"><a href="todo/"> Todo</a></li>	
+                 <li class="page_item"><a href="#"> About</a></li>	
+                 <li><div class="rss"><a href="https://github.com/7color/7color.github.com/commits/master.atom">RSS</a></div></li>
+                 <li class="logo"><a href="http://t.qq.com/sevencolor" class="logo_a"> 七彩映像(@7color)</a></li>
+             </ul>
+         </div>
+         <div id="search">
+            <form method="get" action="search.html" id="search-input" >
+                <input type="text" name="q" value="" size="13" id="search-input-input"><input type="submit" id="search-submit" name="" value="OK">
+            </form>
+         </div>
+     </div>
+</div>
+<div id="container">
+    <div id="content">
+<h1 id="toc_1" class="justcenter">Git安装与配置</h1>
+<h2 id="toc_1.1">下载</h2>
+<h5 id="toc_1.1.0.0.1">GIT下载</h5>
+<p>
+<a href="http://code.google.com/p/msysgit/">项目地址</a>
+<a href="http://msysgit.googlecode.com/files/Git-1.7.3.1-preview20101002.exe">源文件(Win)</a>
+<h5 id="toc_1.1.0.0.2">TortoiseGit下载</h5>
+<a href="http://code.google.com/p/tortoisegit/">项目地址</a>
+<a href="http://tortoisegit.googlecode.com/files/TortoiseGit-1.5.8.0-32bit.msi">源文件(Win)</a>
+</p>
+
+<h2 id="toc_1.2">配置</h2>
+<ol>
+<li>
+生成keygen
+<pre>
+  ssh-keygen -t rsa -C "voow@qq.com"
+</pre>
+  然后复制~/.ssh/id_rsa.pub的内容至<a href="https://github.com/account#ssh_bucket">github公钥</a>,添加新的公钥,标题任意,公钥的内容为id_rsa.pub的内容
+</li>
+<li>
+为当前版本库添加用户信息
+<pre>
+  git config --global user.name "7color"
+  git config --global user.email voow@qq.com
+</pre>
+</li>
+<li>
+创建版本库目录
+<pre>
+  mkdir 7color.github.com  
+</pre>
+</li>
+<li>
+切换至版本库目录
+<pre>
+  cd 7color.github.com
+</pre>
+</li>
+<li>
+初始化版本库
+<pre>
+  git init
+</pre>
+</li>
+<li>
+新建文件README
+<pre>
+  touch README 
+</pre>
+</li>
+<li>
+将文件提交到 git索引(空格分隔文件名, add . 提交所有)
+<pre>
+  git add README  
+</pre>
+</li>
+<li>
+提交版本库,并添加备注(-m 添加备注,无参数 调用系统编辑器添加备注,-a 省略add,一次性提交索引与提交版本库)
+<pre>
+  git commit -m "first commit"  
+</pre>
+</li>
+<li>
+创建远程主机的标记7color
+<pre>
+  git remote add 7color(origin) git@github.com:xixer/7color.github.com.git
+</pre>
+</li>
+<li>
+从7color标记(指定)的remote(远程主机)获取最新的版本到本地，并自动进行merge到本地当前分支上(fetch+merge)
+<pre>
+  git pull 7color master  
+</pre>
+</li>
+<li>
+提交本地master分支的所有的修改至7color标记(指向)的remote(远程主机)的master分支
+<pre>
+  git push 7color master  
+</pre>
+</li>
+</ol>
+<h2 id="toc_1.3">其它命令</h2>
+<ol>
+<li>
+查看版本库状态: <code>git status</code>
+</li>
+<li>
+查看版本纪录(<code>-p</code> 查看每个版本的改动纪录): <code>git log</code>
+</li>
+<li>
+查看自上次提交以来发生什么改动: <code>git diff</code>
+</li>
+<li>
+为某一版本创建版本标签: <code>git tag</code> (版本标签存储在<code>.git/refs/tags/</code>目录)
+</li>
+<li>
+回溯到历史版本(<code>--soft</code> 回溯到已提交到索引但未提交到版本库的状态,<code>--hard</code> 将文件内容也一同回溯,<code>--mixed</code> 默认选项): <code>git reset</code>
+</li>
+<ul>
+<li>
+<code>git reset</code> 回溯到git add之前的状态
+</li>
+<li>
+<code>git reset --soft</code>回溯到
+</li>
+<li>
+<code>git add</code>之后的状态
+</li>
+</ul>
+<li>
+分支:
+</li>
+<ul>
+<li>
+<code>git branch</code> 查看分支(<code>-a</code> 查看所有分支)
+</li>
+<li>
+<code>git branch 分支名称</code> 新建分支
+</li>
+<li>
+<code>git checkout</code> 切换到指定分支(<code>-b</code> 创建分支并切换分支)
+</li>
+<li>
+<code>git branch -D 分支名称</code> 删除分支(<code>-D</code>强行删除分支；<code>-d</code>只有分支内容被合并后才能删除)
+</li>
+<li>
+<code>git merge</code> 合并分支
+</li>
+</ul>
+<li>
+创建一个镜像版本库:
+</li>
+<ul>
+<li>
+<code>git clone 原始版本库路径  镜像版本库路径(local)</code>
+</li>
+<li>
+<code>git fetch origin</code> 更新 <code>origin</code> 分支。如果 <code>origin</code> 分支不是最新的原始版本库，会产生错误的补丁文件(不会自动<code>merge</code>,仅下载 &amp; 更新索引)
+</li>
+<li>
+<code>git rebase origin</code> 将工作迁移到最新原始版本库基础上
+</li>
+<li>
+<code>git format-patch origin</code> 生成补丁文件
+</li>
+<li>
+<code>git am</code> 将这个补丁应用到版本库
+</li>
+</ul>
+<li>
+<code>git pull</code> 从协作者那里获取更新, 并自动merge到本地的当前分支上(<code>fetch+merge</code>)
+</li>
+<li>
+<code>echo "test"&gt;.gitignore</code> 增加到忽略列表
+</li>
+<li>
+查看帮助 <code>git help gitignore</code>,帮助在线文档: <code>安装目录/doc/git/html/gitignore.html</code>
+</li>
+<li>
+删除当前文件夹中的版本库(删除.git目录即可): <code>rm -rf .git</code>
+</li>
+<li>
+<code>git init</code> 初始化后，会在<code>.git/</code>目录下创建一个版本库，其中<code>.git/config</code>为配置文件
+</li>
+<li>
+使用全局用户信息，在<code>~/.gitconfig</code>中写入:
+<pre>
+  [user]
+  name = kardinal
+  email = 2999am@gmail.com
+  *或者*
+  git config --global user.name "7color"
+  git config --global user.email voow@qq.com
+</pre>
+</li>
+</ol>
+<h2 id="toc_1.4">资源链接</h2>
+<ul>
+<li>
+<a href="http://v.youku.com/v_playlist/f5227985o1p0.html">http://v.youku.com/v_playlist/f5227985o1p0.html</a>  视频
+</li>
+<li>
+<a href="http://roclinux.cn/?p=2115#more-2115">http://roclinux.cn/?p=2115#more-2115</a>   看日记学git
+</li>
+<li>
+<a href="http://wenku.baidu.com/search?word=git&amp;lm=0&amp;od=0">http://wenku.baidu.com/search?word=git&amp;lm=0&amp;od=0</a>   百度文库
+</li>
+<li>
+<a href="http://git-scm.com/">http://git-scm.com/</a>
+</li>
+<li>
+<a href="http://hi.baidu.com/felixwang/blog/item/7ce2cf1b2fccf7fdaf51338b.html">http://hi.baidu.com/felixwang/blog/item/7ce2cf1b2fccf7fdaf51338b.html</a>  使用public/private key让putty(ssh)自动登录
+</li>
+<li>
+<a href="http://www.kudelabs.com/2008/09/24/mysmgit-%E4%B9%8Bgit-on-windows%E5%BF%AB%E9%80%9F%E4%B8%8A%E6%89%8B">http://www.kudelabs.com/2008/09/24/mysmgit-%E4%B9%8Bgit-on-windows%E5%BF%AB%E9%80%9F%E4%B8%8A%E6%89%8B</a>  mysmGit 之Git on Windows快速上手
+</li>
+<li>
+<a href="http://www.ha97.com/book/OpenSource_Guide/ch28s05.html">http://www.ha97.com/book/OpenSource_Guide/ch28s05.html</a>  git命令入门
+</li>
+<li>
+<a href="http://help.github.com/msysgit-key-setup/">http://help.github.com/msysgit-key-setup/</a>  ssh keygen
+</li>
+<li>
+<a href="http://pages.github.com/">http://pages.github.com/</a>  git pages
+</li>
+<li>
+<a href="http://eshilin.blog.163.com/blog/static/13288033020106610250138/">http://eshilin.blog.163.com/blog/static/13288033020106610250138/</a>  Git startup
+</li>
+<li>
+<a href="http://eshilin.blog.163.com/blog/static/132880330201066102650433/">http://eshilin.blog.163.com/blog/static/132880330201066102650433/</a> Git branch
+</li>
+<li>
+<a href="http://eshilin.blog.163.com/blog/static/132880330201062991718683/">http://eshilin.blog.163.com/blog/static/132880330201062991718683/</a> Git hook book
+</li>
+</ul>
+    </div>
+</div>
+<div id="footer">
+    <div id="footer-3rd">
+        <div id="footer-text">
+            Copyright &copy;2010&nbsp;七彩映像(@7color)&nbsp;&nbsp;|&nbsp;&nbsp;Powered By <a href="https://code.google.com/p/vimwiki">VimWiki</a>,&nbsp;&nbsp;<a href="https://github.com">GitHub</a>
+        </div>
+    </div>
+</div>
+<div id="sidecatalog" style="position:absolute;display:none;">
+    <div class="sidebar" id="sidebar"></div>
+    <a class="gotop" href="#" id="gotop" title="返回顶部"></a>
+</div>
+<div id="side-catalog-content" style="position:absolute;display:none;"></div>
+</body>
+</html>

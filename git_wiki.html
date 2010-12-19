@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Github 搭建个人Wiki - 七彩映像.Wiki</title>
+    <meta name="Keywords" content="7color,seven color,七彩映像,vim,php,js" />
+    <meta name="Description" content="记录我的所学所得" />
+    <link href="images/favicon.ico" rel="SHORTCUT ICON" type="image/x-icon" />
+    <link rel="Stylesheet" type="text/css" href="styles/base.css" />
+    <link rel="Stylesheet" type="text/css" href="styles/7color.css" />
+    <script type="text/javascript">var root_path = '';</script>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+    <script type="text/javascript" src="scripts/7color.js"></script>
+</head>
+<body>
+<div id="header">
+     <div id="menu">
+         <div id="menu_center">
+             <ul>
+                 <li class="page_item"><a href="/"> Home</a></li>	
+                 <li class="page_item"><a href="diary/"> Diary</a></li>	
+                 <li class="page_item"><a href="todo/"> Todo</a></li>	
+                 <li class="page_item"><a href="#"> About</a></li>	
+                 <li><div class="rss"><a href="https://github.com/7color/7color.github.com/commits/master.atom">RSS</a></div></li>
+                 <li class="logo"><a href="http://t.qq.com/sevencolor" class="logo_a"> 七彩映像(@7color)</a></li>
+             </ul>
+         </div>
+         <div id="search">
+            <form method="get" action="search.html" id="search-input" >
+                <input type="text" name="q" value="" size="13" id="search-input-input"><input type="submit" id="search-submit" name="" value="OK">
+            </form>
+         </div>
+     </div>
+</div>
+<div id="container">
+    <div id="content">
+<h1 id="toc_1" class="justcenter">Github 搭建个人Wiki</h1>
+<h2 id="toc_1.1">需求分析</h2>
+<ol>
+<li>
+需要自动同步 <code>7color.github.com</code> 的所有文件
+</li>
+<li>
+有变更的文件才同步上去
+</li>
+<li>
+被删掉的文件也要能同步删掉
+</li>
+<li>
+由于文件修改频繁，不需要一旦修改就马上同步
+</li>
+<li>
+有需要时可以手动同步
+</li>
+<li>
+最好能排除一些不用放在线上的文件
+</li>
+<li>
+不能占用太多系统资源
+</li>
+</ol>
+<p>
+看了上面的需求分析，相信大家想到的都是各种版本管理工具。那就来试试时下最火的 git 吧！
+<h2 id="toc_1.2">使用 Git + Batch file(Win)</h2>
+</p>
+<ol>
+<li>
+首先新建一个仓库，我这里使用的项目名是 <code>7color.github.com</code>。获得SSH地址 git@github.com:7color/7color.github.com.git。
+</li>
+<li>
+接着把 <code>7color.github.com</code> 文件夹初始化为 git 项目，push 到 github 上去。git命令参考：<a href="git.html">Git安装与配置</a>
+</li>
+<li>
+接下来就要想办法做到自动提交。首先绕不开的问题就是用户验证。相信会用 Git 的人都已经按照Github上的指导建立了 ssh key 。但不知道你试过 ssh-agent 这个东西没有？简单来说，它可以让你不用每次提交修改到 git 服务器时都输入密码。请参照这篇教程进行设置：<a href="http://help.github.com/working-with-key-passphrases/">http://help.github.com/working-with-key-passphrases/</a> 。<br />
+  然后写一段批处理脚本，自动完成 commit, push 等操作。但经过本人亲身尝试，虽然 msysgit 可以让 Window 命令行里有 git 命令可以用，却不能在里面享用 ssh-agent 的登录状态，要做到免密码输入， 只能进入到 git bash ，然后用 vbs 模拟键盘输入 。这段 vbs 我是暂时没有能力写出来了。而且就算能写，还牵涉到判断提交是否已经成功的问题，就算我们爱折腾，也要量力而行哈。<br />
+  所以，一劳永逸的方法还是生成ssh key时不要设置 passphrase 。鉴于这个 key 并不那么容易被泄露，不要 passphrase 还是可以接受的。忘了怎么generate SSH key了？看这里： <a href="http://help.github.com/msysgit-key-setup/">http://help.github.com/msysgit-key-setup/</a><br />
+</li>
+</ol>
+
+<p>
+批处理文件内容:
+</p>
+<pre>
+@echo off
+title Sync Blogger
+
+:PULL
+echo Blogger sync(pull) starting...
+echo .
+git pull 7color master
+
+echo .
+echo ==============================================================================
+git status
+
+echo .
+echo ==============================================================================
+:LABEL_CONFIRM
+set /p doPush=Pull from server completed, continue to push(y/n)?
+if "%doPush%"=="y" goto LABEL_PUSH
+if "%doPush%"=="n" goto exit
+goto LABEL_CONFIRM
+
+
+:LABEL_PUSH
+echo .
+
+:: get date and time
+:: for /f "delims=" %%a in ('date/t') do @set mydate=%%a
+:: for /f "delims=" %%a in ('time/t') do @set mytime=%%a
+set mydate=%DATE:~0,10%
+set mytime=%TIME:~0,8%
+set fvar=%mydate% %mytime%
+
+git add .
+git commit -a -m "Automatic commit at %fvar%"
+
+:: check if ssh-agent is running
+:: tasklist|find /i "ssh-agent.exe" || cmd /c ""C:\Program Files\Git\bin\sh.exe" --login -i" &amp;&amp; exit
+call git push 7color master
+
+echo .
+echo .---------------------------------------------------------------------------.
+echo ' '
+echo ' Sync complete! '
+echo ' '
+echo `---------------------------------------------------------------------------+
+
+:LABEL_DONE
+pause
+exit
+    
+</pre>
+<p>
+另存为 sync.bat ，放到 <code>7color.githu.com</code> 目录下。然后将其添加到 Windows 的任务计划程序里，就可以做到定时推送。或者你不喜欢定时推送，每次有需要时再运行这个脚本也可以。
+</p>
+<ol>
+<li>
+绑定快捷键
+<pre>
+  map &lt;C-F2&gt; :exec 'silent !start cmd /k "cd /d "'.VimwikiGet('path_html').'" &amp; sync"'&lt;cr&gt;
+  map &lt;S-F2&gt; :VimwikiAll2HTML&lt;cr&gt;
+  map &lt;F2&gt; :Vimwiki2HTML&lt;cr&gt;
+</pre>
+</li>
+<li>
+至此文件自动push完成
+</li>
+</ol>
+
+<h2 id="toc_1.3">在github上显示网页</h2>
+<p>
+本文仅介绍<code>Github Pages</code>的方式,其它方式请参考: <a href="http://wiki.ktmud.com/tips/vim/ways-to-sync-vimwiki.html">丘迟的维基世界</a>
+</p>
+
+<p>
+关于Github Pages,请参考: <a href="http://pages.github.com/">Github Pages帮助文档</a>设置CNAME,404等
+</p>
+<blockquote>
+<strong>注</strong>: github 页面生成后，会给用户发送提醒邮件。每次同步成功都有这个邮件，多烦人啊，到 <a href="https://github.com/account/notifications">https://github.com/account/notifications</a> 去改一下设置吧
+</blockquote>
+
+<h2 id="toc_1.4">资源链接</h2>
+<ul>
+<li>
+<a href="http://blog.hotoo.me/use-vimwiki-for-blog.html">http://blog.hotoo.me/use-vimwiki-for-blog.html</a> 
+</li>
+<li>
+<a href="http://blog.leezhong.com/tech/2010/08/25/make-github-as-blog-engine.html">http://blog.leezhong.com/tech/2010/08/25/make-github-as-blog-engine.html</a> 
+</li>
+<li>
+<a href="http://9hills.us/wiki/vimwiki.html">http://9hills.us/wiki/vimwiki.html</a> 
+</li>
+<li>
+<a href="http://wiki.ktmud.com/tips/vim/vimwiki-guide.html#toc_0.3.3">http://wiki.ktmud.com/tips/vim/vimwiki-guide.html#toc_0.3.3</a> 同步 vimwiki 到线上的各种方法 
+</li>
+<li>
+<a href="http://wiki.ktmud.com/tips/vim/ways-to-sync-vimwiki.html">http://wiki.ktmud.com/tips/vim/ways-to-sync-vimwiki.html</a> 用 vimwiki 搭建你自己的维基世界 
+</li>
+<li>
+<a href="https://github.com/ninehills/ninehills.github.com">https://github.com/ninehills/ninehills.github.com</a> 
+</li>
+<li>
+<a href="https://github.com/ktmud/kwiki_tpl">https://github.com/ktmud/kwiki_tpl</a> 
+</li>
+<li>
+<a href="https://github.com/hotoo/hotoo.github.com">https://github.com/hotoo/hotoo.github.com</a> 
+</li>
+</ul>
+    </div>
+</div>
+<div id="footer">
+    <div id="footer-3rd">
+        <div id="footer-text">
+            Copyright &copy;2010&nbsp;七彩映像(@7color)&nbsp;&nbsp;|&nbsp;&nbsp;Powered By <a href="https://code.google.com/p/vimwiki">VimWiki</a>,&nbsp;&nbsp;<a href="https://github.com">GitHub</a>
+        </div>
+    </div>
+</div>
+<div id="sidecatalog" style="position:absolute;display:none;">
+    <div class="sidebar" id="sidebar"></div>
+    <a class="gotop" href="#" id="gotop" title="返回顶部"></a>
+</div>
+<div id="side-catalog-content" style="position:absolute;display:none;"></div>
+</body>
+</html>

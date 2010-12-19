@@ -61,6 +61,370 @@
 <strong>Jumping</strong> 当当前页数 <code>CurrentPageNumber % PageRange == 0</code> 时,重新设置页数范围.<br>
 <strong>Sliding</strong> 当前页数 <code>CurrentPageNumber</code> 始终居中于页数范围 <code>PageRange</code>.<br>
 </blockquote>
+<h3 id="toc_1.1.1">使用方法</h3>
+<pre class="brush: php;">
+//在视图的paginationControl中指定Scrolling Style为Sliding
+$this-&gt;paginationControl($this-&gt;paginator, 'Sliding', 'my_pagination_control.phtml');
+//在控制器中直接设置
+Zend_Paginator::setDefaultScrollingStyle('Sliding');
+</pre>
+<h3 id="toc_1.1.2">自定义Scrolling Style</h3>
+<pre class="brush: php">
+class Color_Paginator_ScrollingStyle_XXX extends Zend_Paginator_ScrollingStyle_Sliding
+{
+  public function getPages(Zend_Paginator $paginator, $pageRange = null)
+  {
+    //TODO
+  }
+}
+</pre>
+<h2 id="toc_1.2">Adapter</h2>
+<ul>
+<li>
+<code>Array</code> 使用PHP Array.
+</li>
+<li>
+<code>DbSelect</code> 使用Zend_Db_Select,返回Array
+</li>
+<li>
+<code>DbTableSelect</code> 使用Zend_Db_Table_Select,返回Zend_Db_Table_Rowset_Abstract.
+</li>
+<li>
+<code>Iterator</code> 使用Iterator迭代器.
+</li>
+<li>
+<code>Null</code> 不使用Zend_Paginator管理数据,但仍可以利用分页控件.
+</li>
+</ul>
+
+<h3 id="toc_1.2.1">使用方法</h3>
+<ol>
+<li>
+控制器中
+<pre class="brush: php">
+//使用Factory返回Zend_Paginator实例
+$paginator = Zend_Paginator::factory($array);
+
+//Adapter::Array
+//$paginator = new Zend_Paginator(new Zend_Paginator_Adapter_Array($array));
+//Adapter::Zend_Db_Select
+//$paginator = new Zend_Paginator(new Zend_Paginator_Adapter_DbSelect($DbSelect));
+//Adapter::Zend_Db_Table_Select
+//$paginator = new Zend_Paginator(new Zend_Paginator_Adapter_DbTableSelect($DbTableSelect));
+//Adapter::Null
+//$paginator = new Zend_Paginator(new Zend_Paginator_Adapter_Null($num_rows));
+//Adapter::Iterator
+//$paginator = new Zend_Paginator(new Zend_Paginator_Adapter_Iterator($terator));
+
+$paginator-&gt;setCurrentPageNumber($this-&gt;_getParam('page'));//设置当前页数
+           -&gt;setItemCountPerPage(10);//设置每页显示条数
+           -&gt;setPageRange(10);       //设置PageRange
+
+//设置分页视图
+Zend_View_Helper_PaginationControl::setDefaultViewPartial('paginator.phtml');
+
+//设置缓存(Zend_Cache_Core $cache)
+Zend_Paginator::setCache($cache);
+
+//开启自动缓存
+$paginator-&gt;setCacheEnabled();
+
+//Assign
+$this-&gt;view-&gt;paginator = $paginator;
+</pre>
+</li>
+<li>
+视图页面调用
+<pre class="brush: php;html-script:true">
+&lt;?php 
+if (count($this-&gt;paginator)):
+	foreach ($this-&gt;paginator as $item): 
+?&gt;
+&lt;span&gt;&lt;?php echo $item['username']?&gt;&lt;/span&gt;
+&lt;?php 
+	endforeach;
+endif;
+?&gt;
+&lt;div class="paginator"&gt;
+&lt;?php echo $this-&gt;paginationControl($this-&gt;paginator, 
+                                      'Sliding', 
+                                      //如果调用其它module中的视图,可使用array(partialname, module)
+                                      'page/paginator.phtml',
+                                      array('requestParams' =&gt; $this-&gt;requestParams)); ?&gt;
+&lt;/div&gt;
+</pre>
+</li>
+</ol>
+<h3 id="toc_1.2.2">自定义Adapter</h3>
+<pre class="brush: php">
+class Color_Paginator_Adapter_XXX implements Zend_Paginator_Adapter_Interface
+{
+  //Returns an collection of items for a page.
+  public function getItems($offset, $itemCountPerPage)
+  {
+    //TODO
+  }
+
+  public function count()
+  {
+    //TODO 非必须实现
+  }
+}  
+</pre>
+<h2 id="toc_1.3">pagination control</h2>
+<h3 id="toc_1.3.1">分页控制参数</h3>
+<table>
+<tr>
+<th>属性</th>
+<th>类型</th>
+<th>描述</th>
+</tr>
+<tr>
+<td>first</td>
+<td>integer</td>
+<td>第一页</td>
+</tr>
+<tr>
+<td>firstItemNumber</td>
+<td>integer</td>
+<td>当前页中数据项的第一条</td>
+</tr>
+<tr>
+<td>firstPageInRange</td>
+<td>integer</td>
+<td>PageRange中第一项(Scrolling Style)</td>
+</tr>
+<tr>
+<td>current</td>
+<td>integer</td>
+<td>当前页数</td>
+</tr>
+<tr>
+<td>currentItemCount</td>
+<td>integer</td>
+<td>当前页显示条数</td>
+</tr>
+<tr>
+<td>itemCountPerPage</td>
+<td>integer</td>
+<td>每页显示最大条数(即每页条数)</td>
+</tr>
+<tr>
+<td>last</td>
+<td>integer</td>
+<td>最后页数</td>
+</tr>
+<tr>
+<td>lastItemNumber</td>
+<td>integer</td>
+<td>当前页中数据欺罔的最后一条</td>
+</tr>
+<tr>
+<td>lastPageInRange</td>
+<td>integer</td>
+<td>PageRange中最后一项(Scrolling Style)</td>
+</tr>
+<tr>
+<td>next</td>
+<td>integer</td>
+<td>下一页数</td>
+</tr>
+<tr>
+<td>pageCount</td>
+<td>integer</td>
+<td>总页数</td>
+</tr>
+<tr>
+<td>pageInRange</td>
+<td>array</td>
+<td>页数范围(PageRange)的数组(Scrolling Style)</td>
+</tr>
+<tr>
+<td>previous</td>
+<td>integer</td>
+<td>上一页数</td>
+</tr>
+<tr>
+<td>totalItemCount</td>
+<td>integer</td>
+<td>总条数</td>
+</tr>
+</table>
+<h3 id="toc_1.3.2">搜索分页</h3>
+<pre class="brush: php;html-script:true">
+&lt;! --
+See http://developer.yahoo.com/ypatterns/pattern.php?pattern=searchpagination
+--&gt;
+&lt;?php if ($this-&gt;pageCount): ?&gt;
+&lt;div class="paginationControl"&gt;
+&lt;?php if (isset($this-&gt;previous)): ?&gt;
+  &lt;a href="&lt;?php echo $this-&gt;url(array('page' =&gt; $this-&gt;previous)); ?&gt;"&gt;
+    &amp;lt; Previous
+  &lt;/a&gt; |
+&lt;?php else: ?&gt;
+  &lt;span class="disabled"&gt;&amp;lt; Previous&lt;/span&gt; |
+&lt;?php endif; ?&gt;
+ 
+&lt;?php foreach ($this-&gt;pagesInRange as $page): ?&gt;
+  &lt;?php if ($page != $this-&gt;current): ?&gt;
+    &lt;a href="&lt;?php echo $this-&gt;url(array('page' =&gt; $page)); ?&gt;"&gt;
+        &lt;?php echo $page; ?&gt;
+    &lt;/a&gt; |
+  &lt;?php else: ?&gt;
+    &lt;?php echo $page; ?&gt; |
+  &lt;?php endif; ?&gt;
+&lt;?php endforeach; ?&gt;
+ 
+&lt;?php if (isset($this-&gt;next)): ?&gt;
+  &lt;a href="&lt;?php echo $this-&gt;url(array('page' =&gt; $this-&gt;next)); ?&gt;"&gt;
+    Next &amp;gt;
+  &lt;/a&gt;
+&lt;?php else: ?&gt;
+  &lt;span class="disabled"&gt;Next &amp;gt;&lt;/span&gt;
+&lt;?php endif; ?&gt;
+&lt;/div&gt;
+&lt;?php endif; ?&gt;
+</pre>
+<h3 id="toc_1.3.3">内容分页</h3>
+<pre class="brush: php;html-script:true">
+&lt;! --
+  See http://developer.yahoo.com/ypatterns/pattern.php?pattern=itempagination
+--&gt;
+ 
+&lt;?php if ($this-&gt;pageCount): ?&gt;
+&lt;div class="paginationControl"&gt;
+&lt;?php echo $this-&gt;firstItemNumber; ?&gt; - &lt;?php echo $this-&gt;lastItemNumber; ?&gt;
+of &lt;?php echo $this-&gt;totalItemCount; ?&gt;
+ 
+&lt;?php if (isset($this-&gt;previous)): ?&gt;
+  &lt;a href="&lt;?php echo $this-&gt;url(array('page' =&gt; $this-&gt;first)); ?&gt;"&gt;
+    First
+  &lt;/a&gt; |
+&lt;?php else: ?&gt;
+  &lt;span class="disabled"&gt;First&lt;/span&gt; |
+&lt;?php endif; ?&gt;
+ 
+&lt;?php if (isset($this-&gt;previous)): ?&gt;
+  &lt;a href="&lt;?php echo $this-&gt;url(array('page' =&gt; $this-&gt;previous)); ?&gt;"&gt;
+    &amp;lt; Previous
+  &lt;/a&gt; |
+&lt;?php else: ?&gt;
+  &lt;span class="disabled"&gt;&amp;lt; Previous&lt;/span&gt; |
+&lt;?php endif; ?&gt;
+ 
+&lt;?php if (isset($this-&gt;next)): ?&gt;
+  &lt;a href="&lt;?php echo $this-&gt;url(array('page' =&gt; $this-&gt;next)); ?&gt;"&gt;
+    Next &amp;gt;
+  &lt;/a&gt; |
+&lt;?php else: ?&gt;
+  &lt;span class="disabled"&gt;Next &amp;gt;&lt;/span&gt; |
+&lt;?php endif; ?&gt;
+ 
+&lt;?php if (isset($this-&gt;next)): ?&gt;
+  &lt;a href="&lt;?php echo $this-&gt;url(array('page' =&gt; $this-&gt;last)); ?&gt;"&gt;
+    Last
+  &lt;/a&gt;
+&lt;?php else: ?&gt;
+  &lt;span class="disabled"&gt;Last&lt;/span&gt;
+&lt;?php endif; ?&gt;
+ 
+&lt;/div&gt;
+&lt;?php endif; ?&gt;
+</pre>
+<h3 id="toc_1.3.4">下拉列表分页</h3>
+<pre class="brush: php;html-script:true">
+&lt;?php if ($this-&gt;pageCount): ?&gt;
+&lt;select id="paginationControl" size="1"&gt;
+&lt;?php foreach ($this-&gt;pagesInRange as $page): ?&gt;
+  &lt;?php $selected = ($page == $this-&gt;current) ? ' selected="selected"' : ''; ?&gt;
+  &lt;option value="&lt;?php echo $this-&gt;url(array('page' =&gt; $page));?&gt;"&lt;?php echo $selected ?&gt;&gt;
+    &lt;?php echo $page; ?&gt;
+  &lt;/option&gt;
+&lt;?php endforeach; ?&gt;
+&lt;/select&gt;
+&lt;?php endif; ?&gt;
+ 
+&lt;script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"&gt;&lt;/script&gt;
+&lt;script type="text/javascript"&gt;
+$('paginationControl').change(function() {
+    window.location = this.options[this.selectedIndex].value;
+})
+&lt;/script&gt;
+</pre>
+<h3 id="toc_1.3.5">自定义分页</h3>
+<pre class="brush: php;html-script:true">
+&lt;?php 
+if ($this-&gt;pageCount): 
+$this-&gt;requestParams ? '' : $this-&gt;requestParams = array(); 
+?&gt;
+&lt;?php if (isset($this-&gt;previous) &amp;&amp; ($this-&gt;current - $this-&gt;first &gt;= count($this-&gt;pagesInRange)/2)): ?&gt;
+  &lt;a href="&lt;?php echo $this-&gt;url($this-&gt;requestParams + array('page' =&gt; $this-&gt;first)); ?&gt;"&gt;
+    &lt;?php echo $this-&gt;first?&gt;
+  &lt;/a&gt; 
+  &lt;a href="&lt;?php echo $this-&gt;url($this-&gt;requestParams + array('page' =&gt; ($this-&gt;current-10 &lt; 1 ? 1 : $this-&gt;current-10))); ?&gt;"&gt;
+    ...
+  &lt;/a&gt; 
+&lt;?php endif; ?&gt;
+
+&lt;?php foreach ($this-&gt;pagesInRange as $page): ?&gt;
+  &lt;?php if ($page != $this-&gt;current): ?&gt;
+    &lt;a href="&lt;?php echo $this-&gt;url($this-&gt;requestParams + array('page' =&gt; $page)); ?&gt;"&gt;
+        &lt;?php echo $page; ?&gt;
+    &lt;/a&gt; 
+  &lt;?php else: ?&gt;
+    &lt;span class="currentpage"&gt;&lt;?php echo $page; ?&gt;&lt;/span&gt; 
+  &lt;?php endif; ?&gt;
+&lt;?php endforeach; ?&gt;
+
+&lt;?php if (isset($this-&gt;next) &amp;&amp; ($this-&gt;last - $this-&gt;current &gt;= count($this-&gt;pagesInRange)/2)): ?&gt;
+  &lt;a href="&lt;?php echo $this-&gt;url($this-&gt;requestParams + array('page' =&gt; ($this-&gt;current+10&gt;$this-&gt;last?$this-&gt;last:$this-&gt;current+10))); ?&gt;"&gt;
+    ...
+  &lt;/a&gt; 
+  &lt;a href="&lt;?php echo $this-&gt;url($this-&gt;requestParams + array('page' =&gt; $this-&gt;last)); ?&gt;"&gt;
+    &lt;?php echo $this-&gt;last?&gt;
+  &lt;/a&gt;
+&lt;?php endif; ?&gt;
+&lt;span class="paginatorinfo"&gt;[ &lt;?php echo $this-&gt;firstItemNumber; ?&gt; /&lt;?php echo $this-&gt;totalItemCount; ?&gt; ]&lt;/span&gt;
+&lt;?php endif; ?&gt;
+</pre>
+<h2 id="toc_1.4">自定义COUNT查询</h2>
+<pre class="brush: php">
+$adapter = new Zend_Paginator_Adapter_DbSelect($db-&gt;select()-&gt;from('posts'));
+//自定义COUNT查询(当在其它表存储了count计数时,可以更快捷的得到count)
+$adapter-&gt;setRowCount(
+    $db-&gt;select()-&gt;from('item_counts', array(Zend_Paginator_Adapter_DbSelect::ROW_COUNT_COLUMN =&gt; 'post_count'))
+);
+$paginator = new Zend_Paginator($adapter);
+</pre>
+<h2 id="toc_1.5">表单参数传递</h2>
+<ol>
+<li>
+在控制器中把表单接收的参数赋值
+<pre class="brush: php">
+$this-&gt;view-&gt;requestParams = $input-&gt;getUnescaped();
+</pre>
+</li>
+<li>
+在视图中传递给paginationControl视图助手
+<pre class="brush: php">
+$this-&gt;paginationControl($this-&gt;paginator, 'Sliding', 'paginator.phtml', array('requestParams' =&gt;
+      $this-&gt;requestParams));
+</pre>
+</li>
+<li>
+在Paginator.phtml调用 <code>$this-&gt;requestParams</code>
+<pre class="brush: php">
+$this-&gt;requestParams ? '' : $this-&gt;requestParams = array(); 
+
+//方法一: 手动构建参数传递
+$url = '&amp;'.http_build_query($this-&gt;requestParams);
+echo $this-&gt;url() . '?page=' . $this-&gt;first.$url;
+
+//方法二: 使用url助手建立标准路由链接
+echo $this-&gt;url($this-&gt;requestParams + array('page' =&gt; $this-&gt;first));
+</pre>
+</li>
+</ol>
     </div>
 </div>
 <div id="footer">
@@ -70,10 +434,10 @@
         </div>
     </div>
 </div>
-<div id="sidecatalog" style="position:absolute;">
+<div id="sidecatalog" style="position:absolute;display:none;">
     <div class="sidebar" id="sidebar"></div>
     <a class="gotop" href="#" id="gotop" title="返回顶部"></a>
 </div>
-<div id="side-catalog-content" style="display:none;position:absolute"></div>
+<div id="side-catalog-content" style="position:absolute;display:none;"></div>
 </body>
 </html>

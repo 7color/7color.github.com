@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>Wiki索引 - 七彩映像.Wiki</title>
+    <title>Vim正则实例 - 七彩映像.Wiki</title>
     <meta name="Keywords" content="7color,seven color,七彩映像,vim,php,js" />
     <meta name="Description" content="记录我的所学所得" />
     <link href="images/favicon.ico" rel="SHORTCUT ICON" type="image/x-icon" />
@@ -34,41 +34,136 @@
 </div>
 <div id="container">
     <div id="content">
-<h1 id="toc_1" class="justcenter">七彩映像.Wiki 索引</h1>
-<h2 id="toc_1.1">Zend Framework</h2>
+<h1 id="toc_1" class="justcenter">Vim正则实例</h1>
+<blockquote>
+<strong>须转义字符</strong>: <code>.*[]^%/\?~$</code><br/>
+<strong>查看帮助</strong>: <code>:h pattern.txt</code>
+</blockquote>
+<h2 id="toc_1.1">实例</h2>
+<ol>
+<li>
+删除包含关键字(help)的行
+<pre>
+  :g/help/d
+  :g!/help/d    !表示不包含
+</pre>
+</li>
+<li>
+交换奇偶行
+<pre>
+  :g/^/+1m-1
+  -------------------
+  g/^/ 匹配所有行
+  +1   定位到下一行
+  m-1 移到上面去
+</pre>
+</li>
+<li>
+统计字数
+<pre>
+  visual模式下, 选中要查字数的片段后,按g + C-g
+</pre>
+</li>
+<li>
+居中光标所在行
+<pre>
+  zz : 将当前行置于屏幕中间
+  zt : 将当前行置于屏幕顶端
+  zb: 将当前行置于屏幕底端
+</pre>
+</li>
+<li>
+非贪婪匹配
+<pre>
+  默认贪婪匹配到行末：/&lt;a.*&gt; 
+  使用非贪婪匹配本标签：/&lt;a.\{-}&gt;
+</pre>
+</li>
+<li>
+多行空行替换为一个空行
+<pre>
+  %s/\(^$\n\)\+/\r/g
+  g/^\s*$/,/\S/-j|s/.*//   参考:http://www.commandlinefu.com/commands/view/3052/compress-blank-lines-in-vim
+  [相关参考:使用vim的^$\n不能替换空行（全角字符问题）]
+</pre>
+</li>
+<li>
+刪除沒有內容的空行
+<pre>
+  g/^$/d
+</pre>
+</li>
+<li>
+刪除包含有空格組成的空行
+<pre>
+  g/^\s*$/d
+</pre>
+</li>
+<li>
+除以空格或tab開頭到結尾的空行
+<pre>
+  g/^[ |\t]*$/d
+</pre>
+</li>
+<li>
+正则实例
+<pre>
+  :%s/_\([a-z]\)_\(.*\)/_\U\1\l_\2/g
+
+  :%s/\(Wa_.*\)/\1,,,/g 
+  :%s/\(Ar_.*\)/,\1,,/g 
+  :%s/\(So_.*\)/,,\1,/g 
+  :%s/\(Cl_.*\)/,,,\1/g 
+</pre>
+</li>
+<li>
+单行id补齐其它列
+<pre>
+  :%s/\(\d\+\),$/\1,,,,/g  
+</pre>
+</li>
+<li>
+删除空数据的行
+<pre>
+  :g/\d\+,,,,/d 
+</pre>
+</li>
+<li>
+删除单行只有一个逗号的行
+<pre>
+  :g/^\d\+,[a-zA-Z0-9_\- ]*$/d
+</pre>
+</li>
+<li>
+删除空行
+<pre>
+  :g/^$/d
+</pre>
+</li>
+<li>
+大小写切换(v选中的文字可以用u切换到小写，U切换到大写，~在大小写之间切换)
+<pre>
+  VIm
+  HEllo
+  WOrld
+  NIce
+  GOod
+  ME
+  TOo
+  :%s/^\(\w\{2\}\)\(.*\)/\U\1\L\2/g  
+</pre>
+</li>
+</ol>
+<h2 id="toc_1.2">资源链接</h2>
 <ul>
 <li>
-<a href="Zend_Paginator.html">Zend_Paginator</a>
+<a href="http://easwy.com">http://easwy.com</a> 易水博客
 </li>
 <li>
-Zend_Application
+<a href="http://blog.csdn.net/easwy/default.aspx?PageNumber=3">http://blog.csdn.net/easwy/default.aspx?PageNumber=3</a>  易水CSDN
 </li>
 <li>
-Zend_Db
-</li>
-<li>
-<a href="Zend_Controller.html">Zend_Controller</a>
-</li>
-</ul>
-<h2 id="toc_1.2">Javascript</h2>
-<ul>
-<li>
-<a href="tool_resource.html">工具 &amp; 资源</a>
-</li>
-</ul>
-<h2 id="toc_1.3">GIT &amp; VimWiki</h2>
-<ul>
-<li>
-<a href="git.html">Git安装与配置</a>
-</li>
-<li>
-<a href="git_wiki.html">Github 搭建个人wiki</a>
-</li>
-</ul>
-<h2 id="toc_1.4">Vim</h2>
-<ul>
-<li>
-<a href="vim_pattern_instance.html">Vim 正则实例</a>
+<a href="http://www.rayninfo.co.uk/vimtips.html">http://www.rayninfo.co.uk/vimtips.html</a>  vimtips
 </li>
 </ul>
     </div>

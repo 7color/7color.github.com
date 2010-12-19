@@ -295,7 +295,6 @@ color.sidecatalog.tofocus = function() {
             }
             for (var i = 0, sidecontentList_length = color.sidecontentList.length; i < sidecontentList_length; i++) {
                 var current = color.sidecontentList[i];
-                console.log($(current.ele).position().top,scrollTop)
                 if ($(current.ele).position().top <= scrollTop && ((i + 1 == sidecontentList_length) || ((i + 1 < sidecontentList_length) && $(color.sidecontentList[i + 1].ele).position().top > scrollTop))) {
                     var height = i * color.sidecatalog.step;//sidecatalog 当前行的高度
                     var half_vHeight = vHeight / 2;
@@ -378,8 +377,8 @@ $(function(){
 	if($('body').innerHeight() < $(window).height()){
 		$('#container').css('height', $(window).height() - 80);
 		$(window).resize(function(){$('#container').css('height', $(window).height() - 80)});
-		$("#sidecatalog").hide();
 	}else{
+		$("#sidecatalog").show();
 		//当高度大于一屏时,加载 Category
 		color.sidecatalog.init();
 		color.sidecatalog.resize();
@@ -408,19 +407,22 @@ $(function(){
 	}
 	
 	//代码高亮
-    var syntaxHighlight = function() {
+   ~function() {
         color.tools.loadCssFile(root_path + 'syntax/styles/shCoreDefault.css');
         $.getScript(root_path + 'syntax/scripts/shCore.js', function() {
             $.getScript(root_path + 'syntax/scripts/shAutoloader.js', function(){
+				//SyntaxHighlighter.defaults['html-script'] = false;
+				//if(SyntaxHighlighter.defaults['html-script'] == true){
+					color.tools.loadJsFile(root_path + 'syntax/scripts/shBrushXml.js');
+				//}
                 SyntaxHighlighter.autoloader(
                   'js jscript javascript '+ root_path + 'syntax/scripts/shBrushJScript.js',
                   'php '+ root_path + 'syntax/scripts/shBrushPhp.js',
-                  'css CSS Css '+ root_path + 'syntax/scripts/shBrushCss.js'
+                  'css '+ root_path + 'syntax/scripts/shBrushCss.js'
+                  //'xml xhtml xslt html '+ root_path + 'syntax/scripts/shBrushXml.js'
                 );
-                 
                 SyntaxHighlighter.all();
             });
-        });
-    };
-    syntaxHighlight();
+		});
+    }();
 });
