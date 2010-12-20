@@ -92,9 +92,11 @@
 </pre>
 </li>
 <li>
-提交版本库,并添加备注(-m 添加备注,无参数 调用系统编辑器添加备注,-a 省略add,一次性提交索引与提交版本库)
+提交版本库,并添加备注(-m 添加备注,无参数 调用系统编辑器添加备注,-a 省略add,一次性提交索引与提交版本库,--amend
+  调整之前的commit)
 <pre>
-  git commit -m "first commit"  
+  git commit -m "first commit"
+  git show #显示最后一次commit修改的内容
 </pre>
 </li>
 <li>
@@ -158,13 +160,27 @@
 <code>git checkout</code> 切换到指定分支(<code>-b</code> 创建分支并切换分支)
 </li>
 <li>
+<code>git checkout 文件名</code> 恢复某个已修改的文件#撤消未提交的修改
+</li>
+<li>
 <code>git branch -D 分支名称</code> 删除分支(<code>-D</code>强行删除分支；<code>-d</code>只有分支内容被合并后才能删除)
 </li>
 <li>
-<code>git merge</code> 合并分支
+<code>git merge 分支名称</code> 合并指定分支到当前分支
 </li>
 <li>
 <code>git push git@github.com:ACCOUNT/SPACE.git :heads/BRANCH</code> 删除远程分支
+</li>
+</ul>
+<li>
+还原已提交的修改
+</li>
+<ul>
+<li>
+<code>git revert HEAD</code> 还原最近一次提交的修改
+</li>
+<li>
+<code>git revert commit-id</code> 还原指定版本的修改
 </li>
 </ul>
 <li>
@@ -179,12 +195,6 @@
 </li>
 <li>
 <code>git rebase origin</code> 将工作迁移到最新原始版本库基础上
-</li>
-<li>
-<code>git format-patch origin</code> 生成补丁文件
-</li>
-<li>
-<code>git am</code> 将这个补丁应用到版本库
 </li>
 </ul>
 <li>
@@ -259,11 +269,35 @@ ssh-add 完
 支持Git &amp; TortoiseGit 共存<br />
   <strong>解决方法</strong>: 使用puttygen.exe生成的private key复制到github.com的共钥中即可.
 </li>
+<li>
+"To git@github.com:7color/7color.github.com.git ! [rejected]  master -&gt; master (non-fast-forward)<br />
+  error: failed to push some refs to 'git@github.com:7color/7color.github.com.git'<br />
+  To prevent you from losing history, non-fast-forward updates were rejected Merge the remote changes (e.g. 'git pull') before pushing again.<br />
+  See the 'Note about fast-forwards' section of 'git push --help' for details."<br />
+  <strong>解决方法</strong>: 
+</li>
+<ul>
+<li>
+<code>git pull 7color master</code>,更新
+</li>
+<li>
+编辑冲突
+</li>
+<li>
+<code>git commit -am "resolve conflict"</code>
+</li>
+<li>
+<code>git push 7color master</code>,OK
+</li>
+</ul>
 </ul>
 <h2 id="toc_1.5">资源链接</h2>
 <ul>
 <li>
 <a href="http://v.youku.com/v_playlist/f5227985o1p0.html">http://v.youku.com/v_playlist/f5227985o1p0.html</a>  视频
+</li>
+<li>
+<a href="http://wangcongming.info/category/geek-tweak/">http://wangcongming.info/category/geek-tweak/</a>  git-系列(<strong>推荐</strong>)
 </li>
 <li>
 <a href="http://roclinux.cn/?p=2115#more-2115">http://roclinux.cn/?p=2115#more-2115</a>   看日记学git
@@ -297,6 +331,9 @@ ssh-add 完
 </li>
 <li>
 <a href="http://eshilin.blog.163.com/blog/static/132880330201062991718683/">http://eshilin.blog.163.com/blog/static/132880330201062991718683/</a> Git hook book
+</li>
+<li>
+<a href="http://rongjih.blog.163.com/blog/static/335744612010619111042465/">http://rongjih.blog.163.com/blog/static/335744612010619111042465/</a> TortoiseGit密钥的配置
 </li>
 </ul>
     </div>
