@@ -50,7 +50,7 @@
 <li>
 生成keygen
 <pre>
-  ssh-keygen -t rsa -C "voow@qq.com"
+  ssh-keygen -t rsa -C "email@email.com"
 </pre>
   然后复制~/.ssh/id_rsa.pub的内容至<a href="https://github.com/account#ssh_bucket">github公钥</a>,添加新的公钥,标题任意,公钥的内容为id_rsa.pub的内容
 </li>
@@ -58,7 +58,7 @@
 为当前版本库添加用户信息
 <pre>
   git config --global user.name "7color"
-  git config --global user.email voow@qq.com
+  git config --global user.email email@email.com
 </pre>
 </li>
 <li>
@@ -163,6 +163,9 @@
 <li>
 <code>git merge</code> 合并分支
 </li>
+<li>
+<code>git push git@github.com:ACCOUNT/SPACE.git :heads/BRANCH</code> 删除远程分支
+</li>
 </ul>
 <li>
 创建一个镜像版本库:
@@ -203,15 +206,61 @@
 使用全局用户信息，在<code>~/.gitconfig</code>中写入:
 <pre>
   [user]
-  name = kardinal
-  email = 2999am@gmail.com
+  name = 7color
+  email = email@email.com
   *或者*
   git config --global user.name "7color"
-  git config --global user.email voow@qq.com
+  git config --global user.email email@email.com
 </pre>
 </li>
 </ol>
-<h2 id="toc_1.4">资源链接</h2>
+<h2 id="toc_1.4">错误描述</h2>
+<ul>
+<li>
+"remote:error: refushing to delete the current branch:refs/heads/BRANCH to git@github.com:ACCOUNT/SPACE.git ![remote
+  rejected] BRANCH (deletion of the current branch prohibited) error: failed to push some refs to
+  'git@github.com:ACCOUNT/SPACE.git'"<br />
+  <strong>解决方法</strong>: 在github.com的管理员页面,切换当前分支,再次运行删除分支命令即可.
+</li>
+<li>
+"Permission denied to SPACE.git denied to ACCOUNT"<br />
+  <strong>解决方法</strong>: 
+</li>
+<ul>
+<li>
+ssh-keygen -t rsa -C "email@email.com"
+</li>
+<li>
+复制~/.ssh/id_rsa.pub内容
+</li>
+<li>
+打开githu.com-&gt;账户设置-&gt;SSH公钥-&gt;添加新的公钥,保存
+</li>
+<li>
+ssh-add 完
+</li>
+</ul>
+<li>
+"FATAL ERROR: Disconnected: No supported authentication methods available.fatal: The remote end hung up
+  unexpectedly."<br />
+  <strong>解决方法</strong>: 
+</li>
+<ul>
+<li>
+<code>ssh -v git@github.com</code>,如果出现successfully authenticated即表示公钥配置成功.
+</li>
+<li>
+如果你同时安装了Git &amp; TortoiseGit,可以使用<code>echo $GIT_SSH</code>查看ssh连接方式.<br />
+    使用其中一种方式,<code>declare GIT_SSH="D:\Git\bin\sh.exe"</code>,再次<code>echo $GIT_SSH</code>查看是否修改成功.接着再次push试试,应该就可以了.<br />
+    如果想一劳永逸的做法是<code>我的电脑-&gt;高级-&gt;环境变量</code>中添加/修改GIT_SSH的值.然后重启电脑.
+</li>
+</ul>
+<li>
+支持Git &amp; TortoiseGit 共存<br />
+  <strong>解决方法</strong>: 使用puttygen.exe生成的private key复制到github.com的共钥中即可.
+</li>
+</ul>
+<h2 id="toc_1.5">资源链接</h2>
 <ul>
 <li>
 <a href="http://v.youku.com/v_playlist/f5227985o1p0.html">http://v.youku.com/v_playlist/f5227985o1p0.html</a>  视频
