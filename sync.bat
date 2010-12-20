@@ -34,7 +34,6 @@ set commit="Automatic commit at %fvar%"
 
 : LABEL_MANUAL
 set commit=%commit%
-echo %commit%
 
 git add .
 git commit -a -m %commit%
