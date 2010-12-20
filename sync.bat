@@ -21,16 +21,23 @@ goto LABEL_CONFIRM
 
 :LABEL_PUSH
 echo .
-
+set /p commit=Enter commit:
+if "%commit%"==""(goto LABEL_AUTOMATIC) else (goto LABEL_MANUAL)
+: LABEL_AUTOMATIC
 :: get date and time
 :: for /f "delims=" %%a in ('date/t') do @set mydate=%%a
 :: for /f "delims=" %%a in ('time/t') do @set mytime=%%a
 set mydate=%DATE:~0,10%
 set mytime=%TIME:~0,8%
 set fvar=%mydate% %mytime%
+set commit="Automatic commit at %fvar%"
+
+: LABEL_MANUAL
+set commit=%commit%
+echo %commit%
 
 git add .
-git commit -a -m "Automatic commit at %fvar%"
+git commit -a -m %commit%
 
 :: check if ssh-agent is running
 :: tasklist|find /i "ssh-agent.exe" || cmd /c ""C:\Program Files\Git\bin\sh.exe" --login -i" && exit

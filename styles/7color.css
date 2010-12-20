@@ -24,8 +24,8 @@ THEME NAME: 7Color
 	white-space: -pre-wrap; /* Opera 4-6 */
 	white-space: -o-pre-wrap; /* Opera 7 */
 	word-wrap: break-word; /* Internet Explorer 5.5+ */
-    background-color: #F7F7F7;
-    border: 1px solid #E0D9D2;
+    background-color: #F7F9FA;
+    border: 1px dashed #8CACBB;
     font-size: 90%;
     margin: 10px 15px;
 	color:#4B92F1
@@ -33,12 +33,13 @@ THEME NAME: 7Color
     padding: .8em;
     text-align: left;
 	font-family:Microsoft YaHei,calibri,verdana;
-	border-left: 5px solid #DDDDDD;
+	border-left: 5px solid #8CACBB;
+
 	}
 	code{background-color: #EEEEFF;border: 1px solid #DDDDDD;padding: 0.1em 0.2em;}
 	blockquote {
-	background: url(../images/blockquote.png) no-repeat scroll right top #F7F7F7;
-    border: 1px solid #E0D9D2;
+	background: url(../images/blockquote.png) no-repeat scroll right top #F7F9FA;
+    border: 1px solid #8CACBB;
     clear: left;
 	margin: 10px 15px;
     padding: 5px 10px;
