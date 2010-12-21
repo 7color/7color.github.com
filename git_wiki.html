@@ -20,7 +20,7 @@
                  <li><a href="/"> Home</a></li>	
                  <li><a href="diary/"> Diary</a></li>	
                  <li><a href="todo/"> Todo</a></li>	
-                 <li><a href="about.html"> About</a></li>	
+                 <li><a href="http://about.me/7color"> About</a></li>	
                  <li><div class="rss"><a href="https://github.com/7color/7color.github.com/commits/master.atom">RSS</a></div></li>
                  <li><a href="http://t.qq.com/sevencolor" class="logo_a"> 七彩映像(@7color)</a></li>
              </ul>
@@ -78,7 +78,7 @@
 </ol>
 
 <p>
-批处理文件内容:
+批处理文件内容(增加了commit手动添加):
 </p>
 <pre>
 @echo off
@@ -104,32 +104,13 @@ goto LABEL_CONFIRM
 
 :LABEL_PUSH
 echo .
-
+set /p commit=Enter commit:
+if "%commit%"==""(goto LABEL_AUTOMATIC) else (goto LABEL_MANUAL)
+: LABEL_AUTOMATIC
 :: get date and time
 :: for /f "delims=" %%a in ('date/t') do @set mydate=%%a
 :: for /f "delims=" %%a in ('time/t') do @set mytime=%%a
 set mydate=%DATE:~0,10%
-set mytime=%TIME:~0,8%
-set fvar=%mydate% %mytime%
-
-git add .
-git commit -a -m "Automatic commit at %fvar%"
-
-:: check if ssh-agent is running
-:: tasklist|find /i "ssh-agent.exe" || cmd /c ""C:\Program Files\Git\bin\sh.exe" --login -i" &amp;&amp; exit
-call git push 7color master
-
-echo .
-echo .---------------------------------------------------------------------------.
-echo ' '
-echo ' Sync complete! '
-echo ' '
-echo `---------------------------------------------------------------------------+
-
-:LABEL_DONE
-pause
-exit
-    
 </pre>
 <p>
 另存为 sync.bat ，放到 <code>7color.githu.com</code> 目录下。然后将其添加到 Windows 的任务计划程序里，就可以做到定时推送。或者你不喜欢定时推送，每次有需要时再运行这个脚本也可以。
