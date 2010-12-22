@@ -52,7 +52,7 @@
 </ul>
 <h2 id="toc_1.2">Zend_Captcha_Recaptcha</h2>
 <p>
-*ReCaptcha*适配器使用<code>Zend_Service_ReCaptcha</code>来生成校验captchas.支持图片与音频验证 <a href="http://www.google.com/recaptcha/demo/">DEMO</a>,
+<strong>ReCaptcha</strong> 适配器使用<code>Zend_Service_ReCaptcha</code>来生成校验captchas.支持图片与音频验证 <a href="http://www.google.com/recaptcha/demo/">DEMO</a>,
 同时支持EMAIL(在页面上显示EMAIL时,避免spam).<a href="http://code.google.com/intl/zh-CN/apis/recaptcha/">了解更多</a>.使用方法如下:
 </p>
 <pre class="brush: php:html-script:true">
@@ -100,7 +100,7 @@ if($this-&gt;_request-&gt;isPost()){
 </pre>
 <h2 id="toc_1.3">Zend_Captcha_Dumb</h2>
 <p>
-*Dumb*适配器只用于测试或者最后方案.继承<code>Zend_Captcha_Word</code>,提供了随机字符串需要用反序输入来校验(<code>strrev</code>).
+<strong>Dumb</strong> 适配器只用于测试或者最后方案.继承<code>Zend_Captcha_Word</code>,提供了随机字符串需要用反序输入来校验(<code>strrev</code>).
 </p>
 <pre class="brush: php;html-script:true">
 &lt;?php
@@ -131,7 +131,7 @@ if($this-&gt;_request-&gt;isPost()){
 </pre>
 <h2 id="toc_1.4">Zend_Captcha_Figlet</h2>
 <p>
-*Figlet*适配器利用<code>Zend_Text_Figlet</code> 来展示一个FIGlet text. Figlet Captchas只限于字符.你可以在<a href="http://www.figlet.org/fontdb.cgi">这里</a>下载Figlet字体.
+<strong>Figlet</strong> 适配器利用<code>Zend_Text_Figlet</code> 来展示一个FIGlet text. Figlet Captchas只限于字符.你可以在<a href="http://www.figlet.org/fontdb.cgi">这里</a>下载Figlet字体.
 </p>
 <pre class="brush: php;html-script:true">
 &lt;?php
@@ -161,7 +161,7 @@ if($this-&gt;_request-&gt;isPost()){
 </pre>
 <h2 id="toc_1.5">Zend_Captcha_Image</h2>
 <p>
-*Image*适配器使用生成的字符解析为图像. 需要GD库支持.目前仅支持PNG格式.
+<strong>Image</strong> 适配器使用生成的字符解析为图像. 需要GD库支持.目前仅支持PNG格式.
 </p>
 <pre class="brush: php;html-script:true">
 &lt;?php
