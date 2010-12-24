@@ -114,7 +114,7 @@ $paginator = Zend_Paginator::factory($array);
 //Adapter::Null
 //$paginator = new Zend_Paginator(new Zend_Paginator_Adapter_Null($num_rows));
 //Adapter::Iterator
-//$paginator = new Zend_Paginator(new Zend_Paginator_Adapter_Iterator($terator));
+//$paginator = new Zend_Paginator(new Zend_Paginator_Adapter_Iterator($iterator));
 
 $paginator-&gt;setCurrentPageNumber($this-&gt;_getParam('page'));//设置当前页数
            -&gt;setItemCountPerPage(10);//设置每页显示条数
