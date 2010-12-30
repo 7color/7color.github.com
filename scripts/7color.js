@@ -445,6 +445,6 @@ var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga
 //百度统计
 (function() {
 var ba = document.createElement('script'); ba.type = 'text/javascript'; ba.async = true;
-ba.src = (("https:" == document.location.protocol) ? " https://" : " http://") + 'hm.baidu.com/h.js%3Fae3873e8cd3a7eb735164e586ffa3150';
+ba.src = (("https:" == document.location.protocol) ? " https://" : " http://") + 'hm.baidu.com/h.js%3F63db4adcfbcce5107b6eb6200596ee31';
 var b = document.getElementsByTagName('script')[0]; b.parentNode.insertBefore(ba, b);
 })();
