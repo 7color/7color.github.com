@@ -46,7 +46,6 @@ color.sidecatalog.checkToShow = function() {
     var scrollTop = $(window).scrollTop();
     var clientHeight = $(window).height();
     var min_height = Math.min(clientHeight * 2, 200);
-    console.log(scrollTop, min_height)
     if (scrollTop < min_height) {
         return false;
     } else {
@@ -367,7 +366,7 @@ color.sidecatalog.scroll = function(e) {
         $(".sidebar").removeClass('show');
         $("#side-catalog-content").hide();
     } else {
-        sidecatalog.show()
+      sidecatalog.show()
       if (color.sidecatalog.togglestatus) {
         $(".sidebar").addClass('show');
         $("#side-catalog-content").show();
@@ -431,13 +430,6 @@ $(function(){
     }();
 });
 
-//百度统计
-(function() {
-var ba = document.createElement('script'); ba.type = 'text/javascript'; ba.async = true;
-ba.src = (("https:" == document.location.protocol) ? " https://" : " http://") + 'hm.baidu.com/h.js%3Fae3873e8cd3a7eb735164e586ffa3150';
-var b = document.getElementsByTagName('script')[0]; b.parentNode.insertBefore(ba, b);
-})();
-
 //谷歌统计
 var _gaq = _gaq || [];
 _gaq.push(['_setAccount', 'UA-20432999-1']);
@@ -448,4 +440,11 @@ _gaq.push(['_trackPageview']);
 var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
 ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
 var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+})();
+
+//百度统计
+(function() {
+var ba = document.createElement('script'); ba.type = 'text/javascript'; ba.async = true;
+ba.src = (("https:" == document.location.protocol) ? " https://" : " http://") + 'hm.baidu.com/h.js%3Fae3873e8cd3a7eb735164e586ffa3150';
+var b = document.getElementsByTagName('script')[0]; b.parentNode.insertBefore(ba, b);
 })();
