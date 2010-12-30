@@ -46,6 +46,7 @@ color.sidecatalog.checkToShow = function() {
     var scrollTop = $(window).scrollTop();
     var clientHeight = $(window).height();
     var min_height = Math.min(clientHeight * 2, 200);
+    console.log(scrollTop, min_height)
     if (scrollTop < min_height) {
         return false;
     } else {
@@ -362,9 +363,11 @@ color.sidecatalog.resize = function(e) {
 color.sidecatalog.scroll = function(e) {
     var sidecatalog = $("#sidecatalog");
     if (!color.sidecatalog.checkToShow()) {
+        sidecatalog.hide()
         $(".sidebar").removeClass('show');
         $("#side-catalog-content").hide();
     } else {
+        sidecatalog.show()
       if (color.sidecatalog.togglestatus) {
         $(".sidebar").addClass('show');
         $("#side-catalog-content").show();
@@ -378,9 +381,10 @@ $(function(){
 		$('#container').css('height', $(window).height() - 80);
 		$(window).resize(function(){$('#container').css('height', $(window).height() - 80)});
 	}else{
-		$("#sidecatalog").show();
 		//当高度大于一屏时,加载 Category
 		color.sidecatalog.init();
+    if(color.sidecontentList.length < 2) return false;
+		//$("#sidecatalog").show();
 		color.sidecatalog.resize();
 		color.sidecatalog.scroll();
 		$(window).scroll(function(){color.sidecatalog.scroll()})
