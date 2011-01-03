@@ -398,7 +398,7 @@ DESCRIPTION: Two-column fluid layout with one sidebars left of content
 		text-decoration: none;
 	}
 	#side-catalog-content h3 {
-		background: url(../images/bgs3.gif) no-repeat scroll 12px -327px transparent;
+		background: url(../images/h-dot.gif) no-repeat scroll 12px 8px transparent;
 		font-size: 14px;
 		font-weight: normal;
 		height: 20px;
@@ -408,7 +408,7 @@ DESCRIPTION: Two-column fluid layout with one sidebars left of content
 		padding-left: 26px;
 	}
 	#side-catalog-content h4 {
-		background: url(../images/bgs3.gif) no-repeat scroll 12px -327px transparent;
+		background: url(../images/h-dot.gif) no-repeat scroll 12px 8px transparent;
 		font-size: 14px;
 		font-weight: normal;
 		height: 20px;

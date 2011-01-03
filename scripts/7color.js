@@ -234,7 +234,11 @@ color.sidecatalogDomInit  = function() {
         $(a_links[i]).click(
         function(e) {
             color.sidecatalog.scrollto($(this).attr("data-index"));
-            e.preventDefault()
+            if(e.preventDefault){
+              e.preventDefault();
+            }else{
+              e.returnValue = false;
+            }
         })
     }
     a_links = null;
@@ -246,7 +250,8 @@ color.sidecatalog.scrollto = function(index) {
       var target = $(color.sidecontentList[index].ele);
       if (!target) return;
       var targetOffset = $(target).offset().top;
-      $('html,body').animate({scrollTop: targetOffset+'px'}, 400);
+      $body = ($.browser.opera) ? (document.compatMode == "CSS1Compat" ? $('html') : $('body')) : $('html,body');
+      $body.animate({scrollTop: targetOffset+'px'}, 400);
     }
 };
 //展开,隐藏sidecatalog
