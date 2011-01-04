@@ -85,8 +85,8 @@ q: 或 :_CTRL-F
 <li>
 VISUAL 模式 (方便增加 HTML 标签)
 <pre>
-  :vmap sb "zdi&lt;C-R&gt;z&lt;ESC&gt; : 在 VISUALLY模式下将选中的文本前后分别加上
-  :vmap st "zdi&lt;?= &lt;C-R&gt;z ?&gt;&lt;ESC&gt; : 加上 &lt;?= ?&gt;
+  vmap sb "zdi&lt;C-R&gt;z&lt;ESC&gt; : 在 VISUALLY模式下将选中的文本前后分别加上
+  vmap st "zdi&lt;?= &lt;C-R&gt;z ?&gt;&lt;ESC&gt; : 加上 &lt;?= ?&gt;
 </pre>
 </li>
 <li>
@@ -96,6 +96,12 @@ VISUAL 模式 (方便增加 HTML 标签)
   &lt;C-X&gt;&lt;C-L&gt; : 行自动完成（超级有用）
   /&lt;C-R&gt;&lt;C-W&gt; : 把单个&lt;cword&gt;单词放入搜索或者命令行
   /&lt;C-R&gt;&lt;C-A&gt; : 把字符串中有的单词&lt;CWORD&gt;放入搜索或者命令行
+</pre>
+</li>
+<li>
+重新选择上一次的选择区和相同的模式
+<pre>
+  gv  
 </pre>
 </li>
 </ol>
@@ -115,4 +121,4 @@ VISUAL 模式 (方便增加 HTML 标签)
 <div id="side-catalog-content" style="position:absolute;display:none;"></div>
 </body>
 </html>
-<!-- Last modified:  2011-01-04 00:05:43 -->
+<!-- Last modified:  2011-01-04 16:04:39 -->
