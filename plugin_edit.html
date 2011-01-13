@@ -43,10 +43,13 @@
 </blockquote>
 <h2 id="toc_1.2">*complete.vim</h2>
 <blockquote>
-修改/vim73/autoload/下*complete.vim在进行ominicomplete时, m =~? a:base等的判断
+修正ommnicompele时正则的匹配方式及大小写<br />
+1. 修改/vim73/autoload/下*complete.vim在进行omnicomplete时, m =~? a:base等时的判断<br />
+2. 修改/vim73/autoload/下*complete.vim在进行omnicomplete时, 进行m =~#判断(匹配大小写)
 </blockquote>
 <h2 id="toc_1.3">supertab.vim</h2>
 <blockquote>
+此方法只针对*complete.vim中使用 <strong>=~</strong> 匹配
 <strong>L67</strong>: 增加let g:bUserIgnoreCase = &amp;ignorecase<br />
 <strong>L309</strong>: 在function! s:SuperTab(command)行下设置set noignorecase<br />
 <strong>L479</strong>: 在function! s:ReleaseKeyPresses()函数中if b:capturing结束前还原ignored,设置if g:bUserIgnoreCase   let
@@ -169,4 +172,4 @@ endfunction "}}}
 <div id="side-catalog-content" style="position:absolute;display:none;"></div>
 </body>
 </html>
-<!-- Last modified:  2011-01-07 22:48:00 -->
+<!-- Last modified:  2011-01-13 17:43:50 -->
