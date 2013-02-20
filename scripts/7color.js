@@ -24,7 +24,7 @@ color.tools.loadCssFile = function(href) {
 color.tools.fixable = function(elem, options) {
     var elem_obj = $(elem);
     if (elem_obj) {
-        if ($.browser.msie && $.browser.version < 7) {//针对IE6 position:fixed bug
+        if ('undefined' == typeof(document.body.style.maxHeight)) {//针对IE6 position:fixed bug
             elem_obj.css("position", "absolute");
             var offset_height = (options.top || $(window).height());
 			      elem_obj[0].style.setExpression("top", "eval((document.documentElement||document.body).scrollTop+" + offset_height + ") + 'px'")
@@ -250,7 +250,7 @@ color.sidecatalog.scrollto = function(index) {
       var target = $(color.sidecontentList[index].ele);
       if (!target) return;
       var targetOffset = $(target).offset().top;
-      $body = ($.browser.opera) ? (document.compatMode == "CSS1Compat" ? $('html') : $('body')) : $('html,body');
+      $body = (/opera/.test(navigator.userAgent.toLowerCase())) ? (document.compatMode == "CSS1Compat" ? $('html') : $('body')) : $('html,body');
       $body.animate({scrollTop: targetOffset+'px'}, 400);
     }
 };
@@ -268,7 +268,7 @@ color.sidecatalog.toggle = function() {
         toggle_status = !toggle_status;
         color.sidecatalog.togglestatus = toggle_status;
         var scroll_event = color.sidecatalog.tofocus;
-        if ($.browser.msie && $.browser.version < 7) {//IE6时延迟聚焦
+        if ('undefined' == document.body.style.maxHeight) {//IE6时延迟聚焦
             scroll_event = color.sidecatalog.delayfocus;
 
         }
@@ -397,7 +397,7 @@ $(function(){
 	}
 	
 	//IE6 HACK
-	if($.browser.msie && $.browser.version < 7){
+	if('undefined' == document.body.style.maxHeight){
 		//PNG图片透明
 		color.tools.loadJsFile("scripts/unitpngfix.js");
 		//缓存图片
