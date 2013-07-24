@@ -45,7 +45,7 @@
         left: 3px;
     }
     
-    .gsc-tabsArea, .gsc-clear-button, .gsc-tabHeader, .gsc-resultsHeader, .gsc-trailing-more-results, a.gsc-trailing-more-results, .gs-visibleUrl, .gs-watermark, .gsc-adBlock, .gsc-adBlockVertical {
+    .gsc-tabsArea, .gsc-clear-button, .gsc-tabHeader, .gsc-resultsHeader, .gsc-trailing-more-results, a.gsc-trailing-more-results, .gs-visibleUrl, .gs-watermark, .gsc-adBlock, .gsc-adBlockVertical, .gsc-thumbnail-inside {
         display: none;
     }
     
@@ -139,3 +139,4 @@
 		font-weight: bold;
 		text-shadow: 0 1px 0 #1166CC;
 	}
+    .gcsc-branding{float:right;}
